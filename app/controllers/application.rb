@@ -7,4 +7,7 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'dbfbe54e3ef8c15ac2967f7112aad6a0'
+  
+  # GLoc : autodetect language
+  autodetect_language_filter
 end

@@ -1,0 +1,17 @@
+_gloc_rule_default: '|n| n==1 ? "" : "_plural" '
+
+activerecord_error_inclusion: is not included in the list
+activerecord_error_exclusion: is reserved
+activerecord_error_invalid: is invalid
+activerecord_error_confirmation: doesn't match confirmation
+activerecord_error_accepted: must be accepted
+activerecord_error_empty: can't be empty
+activerecord_error_blank: can't be blank
+activerecord_error_too_long: is too long
+activerecord_error_too_short: is too short
+activerecord_error_wrong_length: is the wrong length
+activerecord_error_taken: has already been taken
+activerecord_error_not_a_number: is not a number
+
+gui_validation_error: 1 error
+gui_validation_error_plural: %d errors
