@@ -1,0 +1,20 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+carrot:
+  name: Carrot
+  unit: kg
+  ingredient_category: vegetables
+  period: febapr
+
+beef:
+  name: Beef
+  unit: kg
+  ingredient_category: meat
+  period: wholeyear
+
+lemon:
+  name: Lemon
+  unit: none
+  ingredient_category: fruits
+  period: mayjul
+

@@ -37,3 +37,36 @@ Spec::Runner.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
 end
+
+## SHARED EXAMPLES ##
+
+# Specs for invalid model instances
+shared_examples_for "invalid model instance" do
+  it "should not be valid" do
+    @model_instance.should_not be_valid
+  end
+  
+  it "should not return true on #save" do
+    @model_instance.save.should_not be_true
+  end
+  
+  it "should complain on #save!" do
+    lambda { @model_instance.save! }.should raise_error
+  end
+end
+
+# Shared examples for valid model instance
+shared_examples_for "valid model instance" do
+  it "should be valid and have no errors" do
+    @model_instance.should be_valid
+    @model_instance.errors.should be_empty
+  end
+  
+  it "should return true on #save" do
+    @model_instance.save.should be_true
+  end
+  
+  it "should not complain on #save!" do
+    lambda { @model_instance.save! }.should_not raise_error
+  end
+end

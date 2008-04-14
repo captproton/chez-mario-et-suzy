@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+vegetables:
+  name: Vegetables
+
+meat:
+  name: Meat
+
+seafood:
+  name: Seafood
+
+grains:
+  name: Grains
+
+fruit:
+  name: Fruits
+

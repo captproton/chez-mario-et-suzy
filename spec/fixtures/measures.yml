@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+twokgcarrots:
+  number: 2
+  recipe: beefcarrots
+  ingredient: carrot
+
+onekgbeef:
+  number: 1
+  recipe: beefcarrots
+  ingredient: beef
+
+tenlemons:
+  number: 10
+  recipe: lemonjuice
+  ingredient: lemon
+

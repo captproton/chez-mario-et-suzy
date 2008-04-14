@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+kg:
+  name: Kilogrammes
+  abbreviation: kg
+
+g:
+  name: Grammes
+  abbreviation: g
+
+teaspoon:
+  name: Teaspoons
+  abbreviation: ts
+
+cup:
+  name: Cups
+  abbreviation: cp
+
+none:
+  name: "N/A"
+  abbreviation: "N/A"
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+beefcarrots:
+  name: Beef and carrots
+  description: "It's a very good recipe for harsh winters. It can be cooked at any time !"
+  directions: "Put everything in a big recipient, mix it and cook it."
+  recipe_category: maincourse
+
+lemonjuice:
+  name: Lemon juice
+  description: "A sweet coktail for those of you who like acid juice."
+  directions: "Just mash the lemons and extract the juice."
+  recipe_category: coktail

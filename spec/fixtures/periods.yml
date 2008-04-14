@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+febapr:
+  start_month: 2
+  end_month: 4
+
+junsep:
+  start_month: 6
+  end_month: 9
+
+augdec:
+  start_month: 8
+  end_month: 12
+
+mayjul:
+  start_month: 5
+  end_month: 7
+
+novjan:
+  start_month: 10
+  end_month: 1
+
+wholeyear:
+  start_month: 1
+  end_month: 12
+
