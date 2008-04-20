@@ -1,0 +1,74 @@
+// HEADER
+#header
+  :border-top = 10px solid !color_1
+  :border-bottom = 5px solid !color_1
+  :padding 2em
+  :height 7.5em
+  h1
+    :color = !color_1
+    :font-size 250%
+    :margin 0.67em
+  #menu
+    ul
+      :list-style none
+      :padding 0
+      :margin 0 0 0 17em
+      :position relative
+    li
+      :list-style none
+      :float left
+      :margin 0 1em 0 0
+    a
+      :float left
+      :display block
+      :background-color = !color_2
+      :border-bottom = 2px solid !color_3
+      :padding 1em
+      :color = !color_1
+      &:hover
+        :background-color = !color_1
+        :color = !color_2
+
+#sidebar
+  :background-color = !color_1
+  :width 15em
+  :height 40em
+  :padding 0.3em
+  :float left
+  :color = !color_2
+  ul
+    :margin 2em
+  li
+    :margin-top 1em
+    :margin-bottom 1em
+  a
+    :font-weight bold
+    :font-size 1.1em
+    :color white
+    &:hover
+      :color = !color_2
+
+#main
+  :float left
+  :padding 2em
+  p
+    :width 50em
+
+#errorExplanation
+  :border 1px dashed #bb0000
+  :font-size 1.2em
+  :color #bb0000
+  :padding 0.3em
+  :margin-top 2em
+  :margin-bottom 2em
+  ul
+    :list-style-position inside
+
+#notice
+  :border = 3px dashed !color_2
+  :font-size 1.2em
+  :color = !color_2
+  :text-align center
+  :padding 0.3em
+  :margin-top 2em
+  :margin-bottom 2em

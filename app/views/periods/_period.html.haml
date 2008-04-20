@@ -1,0 +1,7 @@
+%div[period]
+  %h3
+    = l(("label_month_" + period.start_month_symbol.to_s).to_sym) + " - " + l(("label_month_" + period.end_month_symbol.to_s).to_sym)
+  .controls
+    = link_to l(:label_button_edit), edit_period_path(period)
+    |
+    = link_to l(:label_button_delete), period, :confirm => l(:question_confirm_delete), :method => :delete

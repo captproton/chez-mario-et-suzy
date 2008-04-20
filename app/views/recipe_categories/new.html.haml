@@ -1,0 +1,9 @@
+%h2=l :label_title_new_recipe_category
+
+= error_messages_for :recipe_category
+
+- labelled_form_for(@recipe_category) do |f|
+  %p= f.text_field :name, :required => true
+  %p= f.submit l(:label_button_create)
+
+%p= link_to l(:label_link_back), recipe_categories_path

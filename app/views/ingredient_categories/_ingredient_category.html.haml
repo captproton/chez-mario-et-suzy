@@ -1,0 +1,8 @@
+%div[ingredient_category]
+  %h3
+    = link_to ingredient_category.name, ingredient_category_ingredients_path(ingredient_category)
+    %span.count= lwr(:label_info_ingredients_count, ingredient_category.ingredients.size)
+  .controls
+    = link_to l(:label_button_edit), edit_ingredient_category_path(ingredient_category)
+    |
+    = link_to l(:label_button_delete), ingredient_category, :confirm => l(:question_confirm_delete), :method => :delete

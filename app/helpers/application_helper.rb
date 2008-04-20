@@ -1,5 +1,18 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  # Returns the localized month name corresponding to the month symbol supplied
+  def month_name(month_symbol)
+    return "" unless Period.month_symbols.include?(month_symbol)
+    l(("label_month_" + month_symbol.to_s).to_sym)
+  end
+  
+  # Build a labelled form for the specified object
+  def labelled_form_for(object, options = {}, &proc)
+    options[:html] ||= {}
+    options[:html][:class] = 'labelledform' unless options[:html].has_key?(:class)
+    form_for(object, options.merge({ :builder => LabelledFormBuilder, :lang => current_language}), &proc)
+  end
+  
   # Overwriting for localized error messages on model objects
   def error_messages_for(object_name, options = {})
     options = options.symbolize_keys

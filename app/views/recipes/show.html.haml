@@ -1,0 +1,26 @@
+%h2= @recipe.name
+
+- if flash[:notice]
+  #notice
+    %p= flash[:notice]
+
+#recipe_description
+  %p= @recipe.description
+
+#recipe_ingredients
+  %h3= l(:label_section_name_ingredients)
+  %p
+    %table
+      - @recipe.measures.each do |m|
+        %tr
+          %td.number= m.number.to_s + (m.ingredient.unit != Unit.none ? m.ingredient.unit.abbreviation : "")
+          %td= m.ingredient.name
+
+#recipe_directions
+  %h3= l(:label_section_name_directions)
+  %p= @recipe.directions
+
+%p= link_to l(:label_link_back), recipe_category_recipes_path(@recipe_category)
+
+- content_for :sidebar do
+  %li= link_to l(:label_link_view_measures), recipe_category_recipe_measures_path(@recipe_category, @recipe)

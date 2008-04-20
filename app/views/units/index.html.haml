@@ -1,0 +1,11 @@
+%h2=l :label_title_units
+
+- if flash[:notice]
+  #notice
+    %p= flash[:notice]
+
+#units
+  = render :partial => "unit", :collection => @units
+
+- content_for :sidebar do
+  %li= link_to l(:label_link_new_unit), new_unit_path

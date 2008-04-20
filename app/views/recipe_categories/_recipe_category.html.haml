@@ -1,0 +1,8 @@
+%div[recipe_category]
+  %h3
+    = link_to recipe_category.name, recipe_category_recipes_path(recipe_category)
+    %span.count= lwr(:label_info_recipes_count, recipe_category.recipes.size)
+  .controls
+    = link_to l(:label_button_edit), edit_recipe_category_path(recipe_category)
+    |
+    = link_to l(:label_button_delete), recipe_category, :confirm => l(:question_confirm_delete), :method => :delete

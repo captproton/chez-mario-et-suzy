@@ -1,0 +1,24 @@
+!!! XML
+!!!
+%html
+  %head
+    %title=l :label_application_title
+    =stylesheet_link_tag 'main.css'
+  %body
+    #container
+      #header
+        #banner
+          %h1
+            =l :label_application_title
+        #menu
+          %ul
+            %li
+              =link_to l(:label_link_recipes), recipe_categories_path
+            %li
+              =link_to l(:label_link_ingredients), ingredient_categories_path
+      #content
+        #sidebar
+          %ul
+            = yield :sidebar
+        #main
+          = yield

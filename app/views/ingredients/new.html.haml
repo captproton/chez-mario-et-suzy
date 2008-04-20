@@ -1,0 +1,11 @@
+%h2=l :label_title_new_ingredient
+
+= error_messages_for :ingredient
+
+- labelled_form_for([@ingredient_category, @ingredient]) do |f|
+  %p= f.text_field :name, :required => true
+  %p= f.select :unit_id, @units.collect { |u| [u.name, u.id] }, :required => true
+  %p= f.select :period_id, @periods.collect { |p| [month_name(p.start_month_symbol) + " - " + month_name(p.end_month_symbol), p.id] }, :required => true
+  %p= f.submit l(:label_button_create)
+
+%p= link_to l(:label_link_back), ingredient_category_ingredients_path(@ingredient_category)

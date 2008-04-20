@@ -1,0 +1,10 @@
+%h2=l :label_title_edit_unit
+
+= error_messages_for :unit
+
+- labelled_form_for(@unit) do |f|
+  %p= f.text_field :name
+  %p= f.text_field :abbreviation
+  %p= f.submit l(:label_button_update)
+
+%p= link_to l(:label_link_back), units_path

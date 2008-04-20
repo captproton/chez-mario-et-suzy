@@ -1,0 +1,7 @@
+%div[recipe]
+  %h3= link_to recipe.name, polymorphic_url([@recipe_category, recipe])
+  %p= recipe.description
+  .controls
+    = link_to l(:label_button_edit), polymorphic_url([@recipe_category, recipe], :action => :edit)
+    |
+    = link_to l(:label_button_delete), polymorphic_url([@recipe_category, recipe]), :confirm => l(:question_confirm_delete), :method => :delete

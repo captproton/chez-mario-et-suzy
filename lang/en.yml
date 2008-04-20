@@ -13,5 +13,108 @@ activerecord_error_wrong_length: is the wrong length
 activerecord_error_taken: has already been taken
 activerecord_error_not_a_number: is not a number
 
+flash_notice_ingredient_created: Ingredient succesfully created
+flash_notice_ingredient_deleted: Ingredient succesfully deleted
+flash_notice_ingredient_updated: Ingredient succesfully updated
+flash_notice_ingredient_category_created: Ingredient category succesfully created
+flash_notice_ingredient_category_deleted: Ingredient category succesfully deleted
+flash_notice_ingredient_category_updated: Ingredient category succesfully updated
+flash_notice_measure_created: Measure succesfully created
+flash_notice_measure_deleted: Measure succesfully deleted
+flash_notice_measure_updated: Measure succesfully updated
+flash_notice_period_created: Period succesfully created
+flash_notice_period_deleted: Period succesfully deleted
+flash_notice_period_updated: Period succesfully updated
+flash_notice_recipe_created: Recipe succesfully created
+flash_notice_recipe_deleted: Recipe succesfully deleted
+flash_notice_recipe_updated: Recipe succesfully updated
+flash_notice_recipe_category_created: Recipe category succesfully created
+flash_notice_recipe_category_deleted: Recipe category succesfully deleted
+flash_notice_recipe_category_updated: Recipe category succesfully updated
+flash_notice_unit_created: Unit succesfully created
+flash_notice_unit_deleted: Unit succesfully deleted
+flash_notice_unit_updated: Unit succesfully updated
+
+field_abbreviation: Abbreviation
+field_description: Description
+field_directions: Directions
+field_end_month: End month
+field_ingredient: Ingredient
+field_name: Name
+field_number: Number
+field_period: Period
+field_period_id: Period
+field_start_month: Start month
+field_unit: Unit
+field_unit_id: Unit
+
 gui_validation_error: 1 error
 gui_validation_error_plural: %d errors
+
+label_application_title: Chez Mario et Suzy
+
+label_button_create: Create
+label_button_delete: Delete
+label_button_edit: Edit
+label_button_update: Update
+
+label_info_available_from_to: Available from %s to %s
+label_info_ingredients_count: "(1 ingredient)"
+label_info_ingredients_count_plural: "(%d ingredients)"
+label_info_recipes_count: "(1 recipe)"
+label_info_recipes_count_plural: "(%d recipes)"
+label_info_measurable_in: "Measure unit : %s"
+
+label_link_back: Back
+label_link_ingredients: Ingredients
+label_link_new_ingredient: Add new ingredient
+label_link_new_ingredient_category: Add new ingredient category
+label_link_new_period: Add new period
+label_link_new_recipe: Add new recipe
+label_link_new_recipe_category: Add new recipe category
+label_link_new_measure: Add measure
+label_link_new_unit: Add new unit
+label_link_periods: Periods
+label_link_recipes: Recipes
+label_link_units: Units
+label_link_view_measures: See measures
+
+label_month_january: January
+label_month_february: February
+label_month_march: March
+label_month_april: April
+label_month_may: May
+label_month_june: June
+label_month_july: July
+label_month_august: August
+label_month_september: September
+label_month_october: October
+label_month_november: November
+label_month_december: December
+
+label_section_name_directions: Directions
+label_section_name_ingredients: Ingredients
+
+label_title_edit_ingredient: Editing ingredient
+label_title_edit_ingredient_category: Editing ingredient category
+label_title_edit_measure: Editing measure
+label_title_edit_period: Editing period
+label_title_edit_recipe: Editing recipe
+label_title_edit_recipe_category: Editing recipe category
+label_title_edit_unit: Editing unit
+label_title_ingredient_categories: Ingredient categories
+label_title_ingredients: "%s :"
+label_title_measures: "Measures for %s"
+label_title_new_ingredient: Creating a new ingredient
+label_title_new_ingredient_category: Creating a new ingredient category
+label_title_new_measure: Creating a new measure
+label_title_new_period: Creating a new period
+label_title_new_recipe: Creating a new recipe
+label_title_new_recipe_category: Creating a recipe category
+label_title_new_unit: Creating a new unit
+label_title_periods: Available periods
+label_title_recipes: "%s : recipes"
+label_title_recipe_categories: Recipes
+label_title_units: Available units
+
+question_confirm_delete: Do you really want to delete it ?

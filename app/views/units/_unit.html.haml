@@ -1,0 +1,8 @@
+%div[unit]
+  %h3
+    = unit.name
+    %span.unit_abbreviation= '(' + unit.abbreviation + ')'
+  .controls
+    = link_to l(:label_button_edit), edit_unit_path(unit)
+    |
+    = link_to l(:label_button_delete), unit, :confirm => l(:question_confirm_delete), :method => :delete

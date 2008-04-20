@@ -1,0 +1,13 @@
+%h2=l :label_title_recipes, @recipe_category.name
+
+- if flash[:notice]
+  #notice
+    %p= flash[:notice]
+
+#recipes
+  = render :partial => "recipe", :collection => @recipes
+
+%p= link_to l(:label_link_back), recipe_categories_path
+
+- content_for :sidebar do
+  %li= link_to l(:label_link_new_recipe), new_recipe_category_recipe_path(@recipe_category)

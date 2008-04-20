@@ -1,0 +1,32 @@
+#recipe_description
+  p
+    :font-style italic
+
+#recipe_ingredients
+  h3
+    :border-bottom 1px solid black
+    :font-size 1.4em
+  table tr td.number
+    :width 4em
+
+#recipe_directions
+  h3
+    :border-bottom 1px solid black
+    :font-size 1.4em
+  p
+    :padding 1em
+
+.recipe
+  margin: 2em 0 2em 0
+  h3
+    :margin 0.2em
+    a
+      :color = !color_1
+      &:hover
+        :color = !color_2
+  p
+    :font-style italic
+    :margin-left 1em
+    :margin-bottom 0.5em
+  .controls
+    :margin-left 1em

@@ -1,0 +1,11 @@
+%h2= l(:label_title_periods)
+
+- if flash[:notice]
+  #notice
+    %p= flash[:notice]
+
+#periods
+  = render :partial => "period", :collection => @periods
+
+- content_for :sidebar do
+  %li= link_to l(:label_link_new_period), new_period_path
