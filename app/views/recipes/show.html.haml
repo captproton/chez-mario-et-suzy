@@ -5,7 +5,8 @@
     %p= flash[:notice]
 
 #recipe_description
-  %p= @recipe.description
+  .textile_text
+    = RedCloth.new(@recipe.description, [:hard_breaks]).to_html
 
 #recipe_ingredients
   %h3= l(:label_section_name_ingredients)
@@ -18,7 +19,8 @@
 
 #recipe_directions
   %h3= l(:label_section_name_directions)
-  %p= @recipe.directions
+  .textile_text
+    = RedCloth.new(@recipe.directions, [:hard_breaks]).to_html
 
 %p= link_to l(:label_link_back), recipe_category_recipes_path(@recipe_category)
 

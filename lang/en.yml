@@ -64,6 +64,7 @@ label_info_ingredients_count_plural: "(%d ingredients)"
 label_info_recipes_count: "(1 recipe)"
 label_info_recipes_count_plural: "(%d recipes)"
 label_info_measurable_in: "Measure unit : %s"
+label_info_textile: "You can use %s to add some style."
 
 label_link_back: Back
 label_link_ingredients: Ingredients

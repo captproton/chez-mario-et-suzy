@@ -1,5 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  # Returns text for Textile formatting information
+  def textile_info
+    content_tag(:p, l(:label_info_textile, link_to("Textile", "http://hobix.com/textile/quick.html", :popup => true)), :class => 'textile_info')
+  end
+  
   # Returns the localized month name corresponding to the month symbol supplied
   def month_name(month_symbol)
     return "" unless Period.month_symbols.include?(month_symbol)
