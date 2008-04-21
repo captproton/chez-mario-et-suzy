@@ -6,7 +6,7 @@
 
 #recipe_description
   .textile_text
-    = RedCloth.new(@recipe.description, [:hard_breaks]).to_html
+    = textilize(@recipe.description)
 
 #recipe_ingredients
   %h3= l(:label_section_name_ingredients)
@@ -20,7 +20,7 @@
 #recipe_directions
   %h3= l(:label_section_name_directions)
   .textile_text
-    = RedCloth.new(@recipe.directions, [:hard_breaks]).to_html
+    = textilize(@recipe.directions)
 
 %p= link_to l(:label_link_back), recipe_category_recipes_path(@recipe_category)
 

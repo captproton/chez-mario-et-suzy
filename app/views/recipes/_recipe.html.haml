@@ -1,7 +1,7 @@
 %div[recipe]
   %h3= link_to recipe.name, polymorphic_url([@recipe_category, recipe])
   .textile_text
-    = RedCloth.new(recipe.description, [:hard_breaks]).to_html
+    = textilize(recipe.description)
   .controls
     = link_to l(:label_button_edit), polymorphic_url([@recipe_category, recipe], :action => :edit)
     |
