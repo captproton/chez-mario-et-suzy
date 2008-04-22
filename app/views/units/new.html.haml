@@ -3,8 +3,7 @@
 = error_messages_for :unit
 
 - labelled_form_for(@unit) do |f|
-  %p= f.text_field :name, :required => true
-  %p= f.text_field :abbreviation, :required => true
+  = render :partial => 'form', :locals => { :f => f }
   %p= f.submit l(:label_button_create)
 
 %p= link_to l(:label_link_back), units_path

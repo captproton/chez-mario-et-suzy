@@ -3,8 +3,7 @@
 = error_messages_for :period
 
 - labelled_form_for(@period) do |f|
-  %p= f.select :start_month, month_choices, :required => true
-  %p= f.select :end_month, month_choices, :required => true
+  = render :partial => 'form', :locals => { :f => f }
   %p= f.submit l(:label_button_create)
 
 %p= link_to l(:label_link_back), periods_path

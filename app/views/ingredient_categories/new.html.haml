@@ -3,7 +3,7 @@
 = error_messages_for :ingredient_category
 
 - labelled_form_for(@ingredient_category) do |f|
-  %p= f.text_field :name, :required => true
+  = render :partial => 'form', :locals => { :f => f }
   %p= f.submit l(:label_button_create)
 
 %p= link_to l(:label_link_back), ingredient_categories_path

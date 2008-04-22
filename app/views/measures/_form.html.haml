@@ -1,0 +1,2 @@
+%p= f.text_field :number, :required => true
+%p= f.select :ingredient_id, Ingredient.find(:all).collect { |i| [i.name, i.id] }, :required => true

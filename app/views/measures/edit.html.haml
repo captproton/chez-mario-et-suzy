@@ -3,8 +3,7 @@
 = error_messages_for :measure
 
 - labelled_form_for([@recipe_category, @recipe, @measure]) do |f|
-  %p= f.text_field :number, :required => true
-  %p= f.select :ingredient_id, Ingredient.find(:all).collect { |i| [i.name, i.id] }, :required => true
+  = render :partial => 'form', :locals => { :f => f }
   %p= f.submit l(:label_button_update)
 
 %p= link_to l(:label_link_back), recipe_category_recipe_measures_path(@recipe_category, @recipe)
