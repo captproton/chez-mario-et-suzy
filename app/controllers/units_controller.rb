@@ -46,7 +46,7 @@ class UnitsController < ApplicationController
     respond_to do |format|
       if @unit.save
         flash[:notice] = l(:flash_notice_unit_created)
-        format.html { redirect_to(units_url) }
+        format.html { redirect_to Unit.new }
         format.xml  { render :xml => @unit, :status => :created, :location => @unit }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class UnitsController < ApplicationController
     respond_to do |format|
       if @unit.update_attributes(params[:unit])
         flash[:notice] = l(:flash_notice_unit_updated)
-        format.html { redirect_to(units_url) }
+        format.html { redirect_to Unit.new }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class UnitsController < ApplicationController
 
     flash[:notice] = l(:flash_notice_unit_deleted)
     respond_to do |format|
-      format.html { redirect_to(units_url) }
+      format.html { redirect_to Unit.new }
       format.xml  { head :ok }
     end
   end

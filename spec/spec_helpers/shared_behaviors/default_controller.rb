@@ -194,7 +194,10 @@ describe "a default controller (without #show)", :shared => true do
   describe "handling POST to base_path" do
     before(:each) do
       @model = mock_model(model_class, :to_param => "1")
-      model_class.stub!(:new).and_return(@model)
+      # The use of "redirect_to ModelClass.new" implies
+      # the creation of an additional mock
+      @new_model_for_redirect = mock_model(model_class, :new_record? => true)
+      model_class.stub!(:new).and_return(@model, @new_model_for_redirect)
     end
     
     describe "with successful save" do
@@ -231,6 +234,10 @@ describe "a default controller (without #show)", :shared => true do
     before(:each) do
       @model = mock_model(model_class, :to_param => "1")
       model_class.stub!(:find).and_return(@model)
+      
+      # New record for redirection
+      @new_model_for_redirect = mock_model(model_class, :new_record? => true)
+      model_class.stub!(:new).and_return(@new_model_for_redirect)
     end
     
     describe "with successful update" do
@@ -272,6 +279,10 @@ describe "a default controller (without #show)", :shared => true do
     before(:each) do
       @model = mock_model(model_class, :destroy => true)
       model_class.stub!(:find).and_return(@model)
+      
+      # New record for redirection
+      @new_model_for_redirect = mock_model(model_class, :new_record? => true)
+      model_class.stub!(:new).and_return(@new_model_for_redirect)
     end
   
     def do_delete

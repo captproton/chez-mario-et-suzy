@@ -51,7 +51,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.save
         flash[:notice] = l(:flash_notice_ingredient_created)
-        format.html { redirect_to(ingredient_category_ingredients_url(@ingredient_category)) }
+        format.html { redirect_to [ @ingredient_category, Ingredient.new ] }
         format.xml  { render :xml => @ingredient, :status => :created, :location => @ingredient }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class IngredientsController < ApplicationController
     respond_to do |format|
       if @ingredient.update_attributes(params[:ingredient])
         flash[:notice] = l(:flash_notice_ingredient_updated)
-        format.html { redirect_to(ingredient_category_ingredients_url(@ingredient_category)) }
+        format.html { redirect_to [ @ingredient_category, Ingredient.new ] }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +85,7 @@ class IngredientsController < ApplicationController
 
     flash[:notice] = l(:flash_notice_ingredient_deleted)
     respond_to do |format|
-      format.html { redirect_to(ingredient_category_ingredients_url(@ingredient_category)) }
+      format.html { redirect_to [ @ingredient_category, Ingredient.new ] }
       format.xml  { head :ok }
     end
   end

@@ -46,7 +46,7 @@ class PeriodsController < ApplicationController
     respond_to do |format|
       if @period.save
         flash[:notice] = l(:flash_notice_period_created)
-        format.html { redirect_to(periods_url) }
+        format.html { redirect_to Period.new }
         format.xml  { render :xml => @period, :status => :created, :location => @period }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class PeriodsController < ApplicationController
     respond_to do |format|
       if @period.update_attributes(params[:period])
         flash[:notice] = l(:flash_notice_period_updated)
-        format.html { redirect_to(periods_url) }
+        format.html { redirect_to Period.new }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class PeriodsController < ApplicationController
     
     flash[:notice] = l(:flash_notice_period_deleted)
     respond_to do |format|
-      format.html { redirect_to(periods_url) }
+      format.html { redirect_to Period.new }
       format.xml  { head :ok }
     end
   end

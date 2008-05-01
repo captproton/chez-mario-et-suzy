@@ -244,7 +244,10 @@ describe IngredientsController do
   describe "handling POST to /ingredient_categories/30/ingredients" do
     before(:each) do
       @ingredient = mock_model(Ingredient, :null_object => true, :to_param => "1")
-      Ingredient.stub!(:new).and_return(@ingredient)
+      # Mock for redirection
+      @new_ingredient_for_redirect = mock_model(Ingredient, :new_record? => true)
+      Ingredient.stub!(:new).and_return(@ingredient, @new_ingredient_for_redirect)
+      
       @ingredient_category = mock_model(IngredientCategory, :to_param => "30")
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
       init_units_and_periods
@@ -293,6 +296,11 @@ describe IngredientsController do
     before(:each) do
       @ingredient = mock_model(Ingredient, :to_param => "1", :null_object => true)
       Ingredient.stub!(:find).and_return(@ingredient)
+      
+      # Mock for redirection
+      @new_ingredient_for_redirect = mock_model(Ingredient, :new_record? => true)
+      Ingredient.stub!(:new).and_return(@new_ingredient_for_redirect)
+      
       @ingredient_category = mock_model(IngredientCategory, :to_param => "30")
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
       init_units_and_periods
@@ -345,6 +353,11 @@ describe IngredientsController do
     before(:each) do
       @ingredient = mock_model(Ingredient, :destroy => true, :null_object => true)
       Ingredient.stub!(:find).and_return(@ingredient)
+      
+      # Mock for redirection
+      @new_ingredient_for_redirect = mock_model(Ingredient, :new_record? => true)
+      Ingredient.stub!(:new).and_return(@new_ingredient_for_redirect)
+      
       @ingredient_category = mock_model(IngredientCategory, :to_param => "30")
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
     end

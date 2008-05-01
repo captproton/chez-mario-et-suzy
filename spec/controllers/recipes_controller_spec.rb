@@ -340,6 +340,11 @@ describe RecipesController do
     before(:each) do
       @recipe = mock_model(Recipe, :destroy => true, :null_object => true)
       Recipe.stub!(:find).and_return(@recipe)
+      
+      # Mock for redirection
+      @new_recipe_for_redirect = mock_model(Recipe, :new_record? => true)
+      Recipe.stub!(:new).and_return(@new_recipe_for_redirect)
+      
       @recipe_category = mock_model(RecipeCategory, :to_param => "30")
       RecipeCategory.stub!(:find).and_return(@recipe_category)
     end

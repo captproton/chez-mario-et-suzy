@@ -51,7 +51,7 @@ class MeasuresController < ApplicationController
     respond_to do |format|
       if @measure.save
         flash[:notice] = l(:flash_notice_measure_created)
-        format.html { redirect_to(polymorphic_url([@recipe_category, @recipe])) }
+        format.html { redirect_to [ @recipe_category, @recipe ] }
         format.xml  { render :xml => @measure, :status => :created, :location => @measure }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class MeasuresController < ApplicationController
     respond_to do |format|
       if @measure.update_attributes(params[:measure])
         flash[:notice] = l(:flash_notice_measure_updated)
-        format.html { redirect_to(polymorphic_url([@recipe_category, @recipe])) }
+        format.html { redirect_to [ @recipe_category, @recipe ] }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +85,7 @@ class MeasuresController < ApplicationController
 
     flash[:notice] = l(:flash_notice_measure_deleted)
     respond_to do |format|
-      format.html { redirect_to(polymorphic_url([@recipe_category, @recipe])) }
+      format.html { redirect_to [ @recipe_category, @recipe ] }
       format.xml  { head :ok }
     end
   end

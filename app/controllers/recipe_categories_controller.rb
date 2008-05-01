@@ -46,7 +46,7 @@ class RecipeCategoriesController < ApplicationController
     respond_to do |format|
       if @recipe_category.save
         flash[:notice] = l(:flash_notice_recipe_category_created)
-        format.html { redirect_to(recipe_categories_url) }
+        format.html { redirect_to RecipeCategory.new }
         format.xml  { render :xml => @recipe_category, :status => :created, :location => @recipe_category }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class RecipeCategoriesController < ApplicationController
     respond_to do |format|
       if @recipe_category.update_attributes(params[:recipe_category])
         flash[:notice] = l(:flash_notice_recipe_category_updated)
-        format.html { redirect_to(recipe_categories_url) }
+        format.html { redirect_to RecipeCategory.new }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class RecipeCategoriesController < ApplicationController
 
     flash[:notice] = l(:flash_notice_recipe_category_deleted)
     respond_to do |format|
-      format.html { redirect_to(recipe_categories_url) }
+      format.html { redirect_to RecipeCategory.new }
       format.xml  { head :ok }
     end
   end
