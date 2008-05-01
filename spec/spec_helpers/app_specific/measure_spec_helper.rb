@@ -15,4 +15,12 @@ module MeasureSpecHelper
   def required_fields
     [:recipe, :ingredient]
   end
+  
+  def restful_resource_path
+    {
+      :base_path => "/recipe_categories/24/recipes/32/measures",
+      :controller => "measures",
+      :nested_params => { :recipe_category_id => "24", :recipe_id => "32" }
+    }
+  end
 end

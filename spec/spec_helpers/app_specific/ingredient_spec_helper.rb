@@ -16,4 +16,12 @@ module IngredientSpecHelper
   def required_fields
     [:name, :ingredient_category]
   end
+  
+  def restful_resource_path
+    {
+      :base_path => "/ingredient_categories/24/ingredients",
+      :controller => "ingredients",
+      :nested_params => { :ingredient_category_id => "24" }
+    }
+  end
 end

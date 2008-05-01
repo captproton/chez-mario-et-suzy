@@ -13,4 +13,11 @@ module UnitSpecHelper
   def required_fields
     [:name, :abbreviation]
   end
+  
+  def restful_resource_path
+    {
+      :base_path => "/units",
+      :controller => "units"
+    }
+  end
 end

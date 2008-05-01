@@ -13,4 +13,11 @@ module PeriodSpecHelper
   def required_fields
     [:start_month, :end_month]
   end
+  
+  def restful_resource_path
+    {
+      :base_path => "/periods",
+      :controller => "periods"
+    }
+  end
 end

@@ -12,4 +12,11 @@ module RecipeCategorySpecHelper
   def required_fields
     [:name]
   end
+  
+  def restful_resource_path
+    {
+      :base_path => "/recipe_categories",
+      :controller => "recipe_categories"
+    }
+  end
 end
