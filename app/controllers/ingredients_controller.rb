@@ -2,7 +2,7 @@ class IngredientsController < ApplicationController
   layout 'base'
   
   before_filter :find_ingredient_category
-  before_filter :find_units_and_periods, :only => [:new, :edit, :create]
+  before_filter :find_units_and_periods, :only => [:new, :edit, :create, :update]
   
   # GET /ingredients
   # GET /ingredients.xml

@@ -16,10 +16,22 @@ describe Unit do
   
   it "should find Unit.none when it exists" do
     Unit.delete_all
-    none_unit = Unit.create(:name => 'N/A', :abbreviation => 'N/A')
+    none_unit = Unit.create!(:name => 'N/A', :abbreviation => 'N/A')
     
     Unit.should respond_to(:none)
     Unit.none.should eql(none_unit)
+  end
+  
+  it "should return false to #none? when it is not Unit.none" do
+    unit = Unit.create!(:name => "Kilogrammes", :abbreviation => "kg")
+    unit.should respond_to(:none?)
+    unit.none?.should be_false
+  end
+  
+  it "should return true to #none? when it is Unit.none" do
+    unit = Unit.none
+    unit.should respond_to(:none?)
+    unit.none?.should be_true
   end
   
   it_should_behave_like "find existing records"

@@ -14,7 +14,7 @@
     %table
       - @recipe.measures.each do |m|
         %tr
-          %td.number= m.number.to_s + (m.ingredient.unit != Unit.none ? m.ingredient.unit.abbreviation : "")
+          %td.number= m.number.to_s + (!m.ingredient.unit.none? ? m.ingredient.unit.abbreviation : "")
           %td= m.ingredient.name
 
 #recipe_directions

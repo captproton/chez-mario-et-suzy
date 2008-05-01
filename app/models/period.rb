@@ -19,6 +19,10 @@ class Period < ActiveRecord::Base
     @@month_symbols[end_month - 1]
   end
   
+  def whole_year?
+    self == Period.whole_year
+  end
+  
   def self.whole_year
     whole_year = find(:first, :conditions => "start_month = 1 AND end_month = 12")
     unless whole_year

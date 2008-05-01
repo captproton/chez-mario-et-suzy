@@ -2,6 +2,7 @@ class MeasuresController < ApplicationController
   layout 'base'
   
   before_filter :find_recipe_category_and_recipe
+  before_filter :find_ingredients, :only => [:new, :edit]
   
   # GET /measures
   # GET /measures.xml
@@ -93,5 +94,9 @@ class MeasuresController < ApplicationController
     def find_recipe_category_and_recipe
       @recipe_category = RecipeCategory.find(params[:recipe_category_id])
       @recipe = Recipe.find(params[:recipe_id])
+    end
+    
+    def find_ingredients
+      @ingredients = Ingredient.find(:all)
     end
 end

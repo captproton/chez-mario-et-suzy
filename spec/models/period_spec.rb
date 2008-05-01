@@ -4,6 +4,13 @@ describe Period do
   include DefaultModelHelper
   include PeriodSpecHelper
   
+  before(:all) do
+    @month_symbols = [
+      :january, :february, :march, :april, :may, :june,
+      :july, :august, :september, :october, :november, :december
+    ]
+  end
+  
   it_should_behave_like "validates required fields"
   
   it "should not be valid with non numerical values for start_month and end_month" do
@@ -34,6 +41,36 @@ describe Period do
     
     Period.should respond_to(:whole_year)
     Period.whole_year.should eql(whole_year_period)
+  end
+  
+  it "should respond with the correct month symbol to #start_month_symbol" do
+    period = Period.create!(:start_month => 1, :end_month => 1)
+    period.should respond_to(:start_month_symbol)
+    @month_symbols.each_with_index do |month_symbol, index|
+      period.start_month = index + 1
+      period.start_month_symbol.should == month_symbol
+    end
+  end
+  
+  it "should respond with the correct month symbol to #end_month_symbol" do
+    period = Period.create!(:start_month => 1, :end_month => 1)
+    period.should respond_to(:end_month_symbol)
+    @month_symbols.each_with_index do |month_symbol, index|
+      period.end_month = index + 1
+      period.end_month_symbol.should == month_symbol
+    end
+  end
+  
+  it "should return false to #whole_year? when it is not Period.whole_year" do
+    period = Period.create!(:start_month => 1, :end_month => 3)
+    period.should respond_to(:whole_year?)
+    period.whole_year?.should be_false
+  end
+  
+  it "should return true to #whole_year? when it is Period.whole_year" do
+    period = Period.whole_year
+    period.should respond_to(:whole_year?)
+    period.whole_year?.should be_true
   end
   
   it_should_behave_like "find existing records"

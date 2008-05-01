@@ -10,4 +10,4 @@
 %p= link_to l(:label_link_back), ingredient_categories_path
 
 - content_for :sidebar do
-  %li= link_to l(:label_link_new_ingredient), new_ingredient_category_ingredient_path
+  %li= link_to l(:label_link_new_ingredient), new_polymorphic_path([@ingredient_category, Ingredient])

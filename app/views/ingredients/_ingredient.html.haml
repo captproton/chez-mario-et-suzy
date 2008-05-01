@@ -1,8 +1,8 @@
 %div[ingredient]
   %h3= ingredient.name
-  - if ingredient.unit != Unit.none
+  - if !ingredient.unit.none?
     %p.ingredient_unit= l(:label_info_measurable_in, ingredient.unit.abbreviation)
-  - if ingredient.period != Period.whole_year
+  - if !ingredient.period.whole_year?
     %p.ingredient_period= l(:label_info_available_from_to, month_name(ingredient.period.start_month_symbol), month_name(ingredient.period.end_month_symbol))
   .controls
     = link_to l(:label_button_edit), edit_ingredient_category_ingredient_path(@ingredient_category, ingredient)
