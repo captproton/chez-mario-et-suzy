@@ -16,6 +16,14 @@ module MeasureSpecHelper
     [:recipe, :ingredient]
   end
   
+  def attributes_for_errors_explanation
+    {
+      :number => 3,
+      :recipe_id => 1,
+      :ingredient_id => 1
+    }
+  end
+  
   def restful_resource_path
     {
       :base_path => "/recipe_categories/24/recipes/32/measures",

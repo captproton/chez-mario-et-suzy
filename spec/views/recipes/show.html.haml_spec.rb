@@ -26,7 +26,7 @@ describe "/recipes/show.html.haml" do
   end
 
   def call_render
-    render "/recipes/show.html.haml"
+    render "/recipes/show.html.haml", :layout => 'base'
   end
 
   it "should render the full recipe, measures included" do
@@ -45,6 +45,16 @@ describe "/recipes/show.html.haml" do
       end
     end
     response.should have_tag("div#recipe_directions", /Cook it/)
+  end
+  
+  it "should have a link to the recipe measures list" do
+    call_render
+    response.should have_tag("a[href=/recipe_categories/1/recipes/1/measures]")
+  end
+  
+  it "should have a link back to recipes list" do
+    call_render
+    response.should have_tag("a[href=/recipe_categories/1/recipes]")
   end
   
   it_should_behave_like "a page with a flash notice"

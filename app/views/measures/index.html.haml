@@ -7,7 +7,7 @@
 #measures
   = render :partial => "measure", :collection => @measures
 
-%p= link_to l(:label_link_back), polymorphic_url([@recipe_category, @recipe])
+%p= link_to l(:label_link_back), polymorphic_path([@recipe_category, @recipe])
 
 - content_for :sidebar do
   %li= link_to l(:label_link_new_measure), new_recipe_category_recipe_measure_path(@recipe_category, @recipe)

@@ -1,8 +1,8 @@
 %div[recipe]
-  %h3= link_to recipe.name, polymorphic_url([@recipe_category, recipe])
+  %h3= link_to recipe.name, polymorphic_path([@recipe_category, recipe])
   .textile_text
     = textilize(recipe.description)
   .controls
-    = link_to l(:label_button_edit), polymorphic_url([@recipe_category, recipe], :action => :edit)
+    = link_to l(:label_button_edit), edit_polymorphic_path([@recipe_category, recipe])
     |
-    = link_to l(:label_button_delete), polymorphic_url([@recipe_category, recipe]), :confirm => l(:question_confirm_delete), :method => :delete
+    = link_to l(:label_button_delete), polymorphic_path([@recipe_category, recipe]), :confirm => l(:question_confirm_delete), :method => :delete

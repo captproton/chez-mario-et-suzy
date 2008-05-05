@@ -17,6 +17,15 @@ module IngredientSpecHelper
     [:name, :ingredient_category]
   end
   
+  def attributes_for_errors_explanation
+    {
+      :name => "My ingredient",
+      :unit_id => 1,
+      :period_id => 1,
+      :ingredient_category_id => 1
+    }
+  end
+  
   def restful_resource_path
     {
       :base_path => "/ingredient_categories/24/ingredients",
