@@ -4,7 +4,7 @@ class IngredientCategoriesController < ApplicationController
   # GET /ingredient_categories
   # GET /ingredient_categories.xml
   def index
-    @ingredient_categories = IngredientCategory.find(:all)
+    @ingredient_categories = IngredientCategory.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.haml

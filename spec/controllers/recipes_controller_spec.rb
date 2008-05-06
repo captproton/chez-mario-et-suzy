@@ -9,7 +9,9 @@ describe RecipesController do
     before(:each) do
       @recipe = mock_model(Recipe)
       @recipe_category = mock_model(RecipeCategory)
-      @recipe_category.stub!(:recipes).and_return([@recipe])
+      @recipes = [@recipe]
+      @recipes.stub!(:sort_by).and_return(@recipes)
+      @recipe_category.stub!(:recipes).and_return(@recipes)
       RecipeCategory.stub!(:find).and_return(@recipe_category)
     end
     
@@ -32,8 +34,9 @@ describe RecipesController do
       do_get
     end
     
-    it "should find all recipes in the specified recipe category" do
-      @recipe_category.should_receive(:recipes).and_return([@recipe])
+    it "should find all recipes in the specified recipe category and sort then by name" do
+      @recipe_category.should_receive(:recipes).and_return(@recipes)
+      @recipes.should_receive(:sort_by).and_return(@recipes)
       do_get
     end
     
@@ -44,15 +47,18 @@ describe RecipesController do
     
     it "should assign the found recipes for the view" do
       do_get
-      assigns[:recipes].should == [@recipe]
+      assigns[:recipes].should == @recipes
     end
   end
   
   describe "handling GET to /recipe_categories/1/recipes.xml" do
     before(:each) do
-      @recipe = mock_model(Recipe, :to_xml => "XML")
+      @recipe = mock_model(Recipe)
       @recipe_category = mock_model(RecipeCategory)
-      @recipe_category.stub!(:recipes).and_return(@recipe)
+      @recipes = [@recipe]
+      @recipes.stub!(:sort_by).and_return(@recipes)
+      @recipes.stub!(:to_xml).and_return("XML")
+      @recipe_category.stub!(:recipes).and_return(@recipes)
       RecipeCategory.stub!(:find).and_return(@recipe_category)
     end
     
@@ -71,13 +77,14 @@ describe RecipesController do
       do_get
     end
     
-    it "should find all recipes in the specified recipe category" do
-      @recipe_category.should_receive(:recipes).and_return(@recipe)
+    it "should find all recipes in the specified recipe category and sort them by name" do
+      @recipe_category.should_receive(:recipes).and_return(@recipes)
+      @recipes.should_receive(:sort_by).and_return(@recipes)
       do_get
     end
     
     it "should render the found recipes as xml" do
-      @recipe.should_receive(:to_xml).and_return("XML")
+      @recipes.should_receive(:to_xml).and_return("XML")
       do_get
       response.body.should == "XML"
     end

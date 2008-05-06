@@ -24,8 +24,10 @@ describe "a default controller (without #show)", :shared => true do
       response.should render_template('index')
     end
     
-    it "should find all records" do
-      model_class.should_receive(:find).with(:all).and_return([@model])
+    it "should find all records and sort them by name if applicable" do
+      args_for_find = [:all]
+      args_for_find << { :order => 'name' } if model_class.columns.collect(&:name).include?('name')
+      model_class.should_receive(:find).with(*args_for_find).and_return([@model])
       do_get
     end
     
@@ -51,8 +53,10 @@ describe "a default controller (without #show)", :shared => true do
       response.should be_success
     end
 
-    it "should find all records" do
-      model_class.should_receive(:find).with(:all).and_return([@model])
+    it "should find all records and sort them by name if applicable" do
+      args_for_find = [:all]
+      args_for_find << { :order => 'name' } if model_class.columns.collect(&:name).include?('name')
+      model_class.should_receive(:find).with(*args_for_find).and_return([@model])
       do_get
     end
   

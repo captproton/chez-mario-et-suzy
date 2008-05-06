@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.xml
   def index
-    @recipes = @recipe_category.recipes
+    @recipes = @recipe_category.recipes.sort_by(&:name)
 
     respond_to do |format|
       format.html # index.html.haml

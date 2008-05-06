@@ -7,7 +7,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.xml
   def index
-    @ingredients = @ingredient_category.ingredients
+    @ingredients = @ingredient_category.ingredients.sort_by(&:name)
 
     respond_to do |format|
       format.html # index.html.haml

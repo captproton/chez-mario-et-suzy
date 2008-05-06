@@ -38,7 +38,9 @@ describe IngredientsController do
     before(:each) do
       @ingredient = mock_model(Ingredient)
       @ingredient_category = mock_model(IngredientCategory)
-      @ingredient_category.stub!(:ingredients).and_return([@ingredient])
+      @ingredients = [@ingredient]
+      @ingredients.stub!(:sort_by).and_return(@ingredients)
+      @ingredient_category.stub!(:ingredients).and_return(@ingredients)
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
     end
     
@@ -61,8 +63,9 @@ describe IngredientsController do
       do_get
     end
     
-    it "should find all ingredients in the specified ingredient category" do
-      @ingredient_category.should_receive(:ingredients).and_return([@ingredient])
+    it "should find all ingredients in the specified ingredient category and sort them by name" do
+      @ingredient_category.should_receive(:ingredients).and_return(@ingredients)
+      @ingredients.should_receive(:sort_by).and_return(@ingredients)
       do_get
     end
     
@@ -73,15 +76,18 @@ describe IngredientsController do
     
     it "should assign the found ingredients for the view" do
       do_get
-      assigns[:ingredients].should == [@ingredient]
+      assigns[:ingredients].should == @ingredients
     end
   end
   
   describe "handling GET to /ingredient_categories/1/ingredients.xml" do
     before(:each) do
-      @ingredient = mock_model(Ingredient, :to_xml => "XML")
+      @ingredient = mock_model(Ingredient)
       @ingredient_category = mock_model(IngredientCategory)
-      @ingredient_category.stub!(:ingredients).and_return(@ingredient)
+      @ingredients = [@ingredient]
+      @ingredients.stub!(:sort_by).and_return(@ingredients)
+      @ingredients.stub!(:to_xml).and_return("XML")
+      @ingredient_category.stub!(:ingredients).and_return(@ingredients)
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
     end
     
@@ -100,13 +106,14 @@ describe IngredientsController do
       do_get
     end
     
-    it "should find all ingredients in the specified ingredient category" do
-      @ingredient_category.should_receive(:ingredients).and_return(@ingredient)
+    it "should find all ingredients in the specified ingredient category and sort them by name" do
+      @ingredient_category.should_receive(:ingredients).and_return(@ingredients)
+      @ingredients.should_receive(:sort_by).and_return(@ingredients)
       do_get
     end
     
     it "should render the found ingredients as xml" do
-      @ingredient.should_receive(:to_xml).and_return("XML")
+      @ingredients.should_receive(:to_xml).and_return("XML")
       do_get
       response.body.should == "XML"
     end

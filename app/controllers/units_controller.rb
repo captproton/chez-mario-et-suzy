@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.xml
   def index
-    @units = Unit.find(:all)
+    @units = Unit.find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.haml
