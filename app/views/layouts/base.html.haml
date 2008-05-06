@@ -13,9 +13,9 @@
         #menu
           %ul
             %li
-              =link_to l(:label_link_recipes), recipe_categories_path
+              =link_to l(:label_link_recipes), recipe_categories_path, tab_class_for_section(:recipes)
             %li
-              =link_to l(:label_link_ingredients), ingredient_categories_path
+              =link_to l(:label_link_ingredients), ingredient_categories_path, tab_class_for_section(:ingredients)
       #content
         #sidebar
           %ul

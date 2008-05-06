@@ -55,5 +55,7 @@ describe "/recipes/index.html.haml" do
     end
   end
   
+  it_should_behave_like "a page in the recipes section"
+  
   it_should_behave_like "a page with a flash notice"
 end

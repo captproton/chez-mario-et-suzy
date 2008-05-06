@@ -30,6 +30,8 @@ describe "/recipe_categories/new.html.haml" do
       call_render
       response.should have_tag("a[href=/recipe_categories]")
     end
+    
+    it_should_behave_like "a page in the recipes section"
   end
   
   describe "errors explanation block" do

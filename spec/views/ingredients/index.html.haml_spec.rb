@@ -69,5 +69,12 @@ describe "/ingredients/index.html.haml" do
     response.should have_tag("a[href=/ingredient_categories/1/ingredients/new]")
   end
   
+  it "should have a link back to ingredient categories list" do
+    call_render
+    response.should have_tag("a[href=/ingredient_categories]", /#{l(:label_link_back)}/)
+  end
+  
+  it_should_behave_like "a page in the ingredients section"
+  
   it_should_behave_like "a page with a flash notice"
 end

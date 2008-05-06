@@ -55,5 +55,7 @@ describe "/periods/index.html.haml" do
     response.should have_tag("a[href=/periods/new]")
   end
   
+  it_should_behave_like "a page in the ingredients section"
+  
   it_should_behave_like "a page with a flash notice"
 end

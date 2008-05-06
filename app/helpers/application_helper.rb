@@ -18,6 +18,18 @@ module ApplicationHelper
     form_for(object, options.merge({ :builder => LabelledFormBuilder, :lang => current_language}), &proc)
   end
   
+  # Returns { :class => 'active' } if the current page is in the section. Returns {} otherwise
+  def tab_class_for_section(section)
+    html_options = {}
+    case section
+    when :ingredients
+      html_options[:class] = 'active' if %w{ingredient_categories ingredients periods units}.include?(controller.controller_name)
+    when :recipes
+      html_options[:class] = 'active' if %w{recipe_categories recipes measures}.include?(controller.controller_name)
+    end
+    html_options
+  end
+  
   # Overwriting for localized error messages on model objects
   def error_messages_for(object_name, options = {})
     options = options.symbolize_keys
