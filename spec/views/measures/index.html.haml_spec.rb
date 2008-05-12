@@ -8,12 +8,11 @@ describe "/measures/index.html.haml" do
     recipe_category = mock_model(RecipeCategory, :to_param => "1")
     recipe = mock_model(Recipe, :name => "Sauteed beef", :to_param => "1")
     
-    unit_1 = mock_model(Unit, :none? => false, :abbreviation => "kg")
+    unit_1 = mock_model(Unit, :abbreviation => "kg")
     ingredient_1 = mock_model(Ingredient, :name => "Beef", :unit => unit_1)
     measure_1 = mock_model(Measure, :id => 1, :to_param => "1", :number => 3, :ingredient => ingredient_1)
     
-    unit_2 = mock_model(Unit, :none? => true)
-    ingredient_2 = mock_model(Ingredient, :name => "Carrots", :unit => unit_2)
+    ingredient_2 = mock_model(Ingredient, :name => "Carrots", :unit => nil)
     measure_2 = mock_model(Measure, :id => 2, :to_param => "2", :number => 15, :ingredient => ingredient_2)
 
     assigns[:recipe_category] = recipe_category

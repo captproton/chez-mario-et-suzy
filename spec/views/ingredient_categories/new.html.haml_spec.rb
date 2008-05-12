@@ -20,7 +20,6 @@ describe "/ingredient_categories/new.html.haml" do
 
     it "should render new form" do
       call_render
-      output_body(response)
       response.should have_tag("form[action=/ingredient_categories][method=post]") do
         with_tag("input#ingredient_category_name[name=?]", "ingredient_category[name]")
         with_tag("input[type=submit]")

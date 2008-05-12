@@ -16,7 +16,3 @@ cup:
   name: Cups
   abbreviation: cp
 
-none:
-  name: "N/A"
-  abbreviation: "N/A"
-

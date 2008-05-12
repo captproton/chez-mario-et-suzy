@@ -1,6 +1,6 @@
 %div[measure]
   %h3
-    = measure.number.to_s + (!measure.ingredient.unit.none? ? measure.ingredient.unit.abbreviation : "") + " " + measure.ingredient.name
+    = measure.number.to_s + (measure.ingredient.unit ? measure.ingredient.unit.abbreviation : "") + " " + measure.ingredient.name
     %span.controls
       = link_to l(:label_button_edit), edit_polymorphic_path([@recipe_category, @recipe, measure])
       |

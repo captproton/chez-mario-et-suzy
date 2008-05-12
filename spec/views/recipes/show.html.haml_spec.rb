@@ -11,12 +11,11 @@ describe "/recipes/show.html.haml" do
     @recipe.stub!(:description).and_return("Delicious")
     @recipe.stub!(:directions).and_return("Cook it")
     
-    @unit_1 = mock_model(Unit, :none? => false, :abbreviation => "kg")
+    @unit_1 = mock_model(Unit, :abbreviation => "kg")
     @ingredient_1 = mock_model(Ingredient, :name => "Beef", :unit => @unit_1)
     @measure_1 = mock_model(Measure, :number => 3, :ingredient => @ingredient_1)
     
-    @unit_2 = mock_model(Unit, :none? => true)
-    @ingredient_2 = mock_model(Ingredient, :name => "Carrots", :unit => @unit_2)
+    @ingredient_2 = mock_model(Ingredient, :name => "Carrots", :unit => nil)
     @measure_2 = mock_model(Measure, :number => 15, :ingredient => @ingredient_2)
     
     @recipe.stub!(:measures).and_return([ @measure_1, @measure_2 ])

@@ -18,18 +18,4 @@ class Period < ActiveRecord::Base
   def end_month_symbol
     @@month_symbols[end_month - 1]
   end
-  
-  def whole_year?
-    self == Period.whole_year
-  end
-  
-  def self.whole_year
-    whole_year = find(:first, :conditions => "start_month = 1 AND end_month = 12")
-    unless whole_year
-      whole_year = Period.new(:start_month => 1, :end_month => 12)
-      whole_year.save!
-      whole_year.reload
-    end
-    whole_year
-  end
 end

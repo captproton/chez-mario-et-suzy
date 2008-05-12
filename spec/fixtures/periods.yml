@@ -20,7 +20,3 @@ novjan:
   start_month: 10
   end_month: 1
 
-wholeyear:
-  start_month: 1
-  end_month: 12
-

@@ -27,22 +27,6 @@ describe Period do
     period.should have_at_least(1).error_on(:end_month)
   end
   
-  it "should create Period.whole_year when it doesn't exist" do
-    Period.should respond_to(:whole_year)
-    whole_year = Period.whole_year
-    whole_year.should be_instance_of(Period)
-    whole_year.start_month.should == 1
-    whole_year.end_month.should == 12
-  end
-  
-  it "should find Period.whole_year when it exists" do
-    Period.delete_all
-    whole_year_period = Period.create(:start_month => 1, :end_month => 12)
-    
-    Period.should respond_to(:whole_year)
-    Period.whole_year.should eql(whole_year_period)
-  end
-  
   it "should respond with the correct month symbol to #start_month_symbol" do
     period = Period.create!(:start_month => 1, :end_month => 1)
     period.should respond_to(:start_month_symbol)
@@ -59,18 +43,6 @@ describe Period do
       period.end_month = index + 1
       period.end_month_symbol.should == month_symbol
     end
-  end
-  
-  it "should return false to #whole_year? when it is not Period.whole_year" do
-    period = Period.create!(:start_month => 1, :end_month => 3)
-    period.should respond_to(:whole_year?)
-    period.whole_year?.should be_false
-  end
-  
-  it "should return true to #whole_year? when it is Period.whole_year" do
-    period = Period.whole_year
-    period.should respond_to(:whole_year?)
-    period.whole_year?.should be_true
   end
   
   it_should_behave_like "find existing records"

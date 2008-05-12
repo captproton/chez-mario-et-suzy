@@ -10,17 +10,15 @@ describe "/ingredients/index.html.haml" do
     
     ingredient_1 = mock_model(Ingredient, :id => 1, :to_param => "1")
     ingredient_1.should_receive(:name).and_return("Carrots")
-    unit_1 = mock_model(Unit, :none? => false, :abbreviation => "kg")
+    unit_1 = mock_model(Unit, :abbreviation => "kg")
     ingredient_1.should_receive(:unit).at_least(:once).and_return(unit_1)
-    period_1 = mock_model(Period, :whole_year? => false, :start_month_symbol => :january, :end_month_symbol => :march)
+    period_1 = mock_model(Period, :start_month_symbol => :january, :end_month_symbol => :march)
     ingredient_1.should_receive(:period).at_least(:once).and_return(period_1)
     
     ingredient_2 = mock_model(Ingredient, :id => 2, :to_param => "2")
     ingredient_2.should_receive(:name).and_return("Lemons")
-    unit_2 = mock_model(Unit, :none? => true)
-    ingredient_2.should_receive(:unit).at_least(:once).and_return(unit_2)
-    period_2 = mock_model(Period, :whole_year? => true)
-    ingredient_2.should_receive(:period).at_least(:once).and_return(period_2)
+    ingredient_2.should_receive(:unit).at_least(:once).and_return(nil)
+    ingredient_2.should_receive(:period).at_least(:once).and_return(nil)
 
     assigns[:ingredient_category] = ingredient_category
     assigns[:ingredients] = [ingredient_1, ingredient_2]

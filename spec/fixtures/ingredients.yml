@@ -10,11 +10,9 @@ beef:
   name: Beef
   unit: kg
   ingredient_category: meat
-  period: wholeyear
 
 lemon:
   name: Lemon
-  unit: none
   ingredient_category: fruits
   period: mayjul
 
