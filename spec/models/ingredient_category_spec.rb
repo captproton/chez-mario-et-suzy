@@ -10,6 +10,16 @@ describe IngredientCategory do
     IngredientCategory.should have_many(:ingredients)
   end
   
+  it "should be impossible to destroy a non-empty ingredient category" do
+    ingredient_category = IngredientCategory.create!(:name => "Ingredient Category")
+    ingredient = mock_model(Ingredient, :null_object => true)
+    ingredient_category.ingredients << ingredient
+    ingredient_category.save.should be_true
+    ingredient_category.ingredients.should_not be_empty
+    
+    ingredient_category.destroy.should be_false
+  end
+  
   it_should_behave_like "find existing records"
 end
 

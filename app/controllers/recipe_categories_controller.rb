@@ -76,9 +76,13 @@ class RecipeCategoriesController < ApplicationController
   # DELETE /recipe_categories/1.xml
   def destroy
     @recipe_category = RecipeCategory.find(params[:id])
-    @recipe_category.destroy
-
-    flash[:notice] = l(:flash_notice_recipe_category_deleted)
+    
+    if @recipe_category.destroy
+      flash[:notice] = l(:flash_notice_recipe_category_deleted)
+    else
+      flash[:notice] = l(:flash_notice_recipe_category_non_empty)
+    end
+    
     respond_to do |format|
       format.html { redirect_to RecipeCategory.new }
       format.xml  { head :ok }

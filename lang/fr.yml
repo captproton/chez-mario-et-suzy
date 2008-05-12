@@ -1,0 +1,123 @@
+_gloc_rule_default: '|n| n==1 ? "" : "_plural" '
+
+activerecord_error_inclusion: n&#x27;est pas dans la liste des valeurs possibles
+activerecord_error_exclusion: est r&eacute;serv&eacute;
+activerecord_error_invalid: est invalide
+activerecord_error_confirmation: ne correspond pas &agrave; la confirmation
+activerecord_error_accepted: doit &ecirc;tre accept&eacute;
+activerecord_error_empty: ne peut &ecirc;tre vide
+activerecord_error_blank: ne peut &ecirc;tre blanc
+activerecord_error_too_long: est trop long
+activerecord_error_too_short: est trop court
+activerecord_error_wrong_length: n&#x27;est pas de la bonne taille
+activerecord_error_taken: a d&eacute;j&agrave; &eacute;t&eacute; pris
+activerecord_error_not_a_number: n&#x27;est pas un nombre
+
+flash_notice_ingredient_created: L&#x27;ingr&eacute;dient a &eacute;t&eacute; ajout&eacute;.
+flash_notice_ingredient_deleted: L&#x27;ingr&eacute;dient a &eacute;t&eacute; supprim&eacute;.
+flash_notice_ingredient_updated: L&#x27;ingr&eacute;dient a &eacute;t&eacute; mis &agrave; jour.
+flash_notice_ingredient_category_created: La cat&eacute;gorie d&#x27;ingr&eacute;dients a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_ingredient_category_deleted: La cat&eacute;gorie d&#x27;ingr&eacute;dients a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_ingredient_category_non_empty: Impossible de supprimer une cat&eacute;gories d&#x27;ingr&eacute;dients non vide.
+flash_notice_ingredient_category_updated: La cat&eacute;gorie d&#x27;ingr&eacute;dients a &eacute;t&eacute; mise &agrave; jour.
+flash_notice_measure_created: La mesure a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_measure_deleted: La mesure a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_measure_updated: La mesure a &eacute;t&eacute; mise &agrave; jour.
+flash_notice_period_created: La p&eacute;riode a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_period_deleted: La p&eacute;riode a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_period_updated: La p&eacute;riode a &eacute;t&eacute; mise &agrave; jour.
+flash_notice_recipe_created: La recette a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_recipe_deleted: La recette a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_recipe_updated: La recette a &eacute;t&eacute; mise &agrave; jour.
+flash_notice_recipe_category_created: La cat&eacute;gorie de recettes a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_recipe_category_deleted: La cat&eacute;gorie de recettes a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_recipe_category_non_empty: Impossible de supprimer une cat&eacute;gories de recettes non vide.
+flash_notice_recipe_category_updated: La cat&eacute;gorie de recettes a &eacute;t&eacute; mise &agrave; jour.
+flash_notice_unit_created: L&#x27;unit&eacute; de mesure a &eacute;t&eacute; ajout&eacute;e.
+flash_notice_unit_deleted: L&#x27;unit&eacute; de mesure a &eacute;t&eacute; supprim&eacute;e.
+flash_notice_unit_updated: L&#x27;unit&eacute; de mesure a &eacute;t&eacute; mise &agrave; jour.
+
+field_abbreviation: Abr&eacute;viation
+field_description: Description
+field_directions: Pr&eacute;paration
+field_end_month: Mois de fin
+field_ingredient: Ingr&eacute;dient
+field_name: Nom
+field_number: Quantit&eacute;
+field_period: P&eacute;riode
+field_period_id: P&eacute;riode
+field_start_month: Mois de d&eacute;but
+field_unit: Unit&eacute; de mesure
+field_unit_id: Unit&eacute; de mesure
+
+gui_validation_error: 1 erreur
+gui_validation_error_plural: %d erreurs
+
+label_application_title: Chez Mario et Suzy
+
+label_button_create: Cr&eacute;er
+label_button_delete: Supprimer
+label_button_edit: Modifier
+label_button_update: Mettre &agrave; jour
+
+label_info_available_from_to: Disponible de %s &agrave; %s
+label_info_ingredients_count: "(1 ingr&eacute;dient)"
+label_info_ingredients_count_plural: "(%d ingr&eacute;dients)"
+label_info_recipes_count: "(1 recette)"
+label_info_recipes_count_plural: "(%d recettes)"
+label_info_measurable_in: "Unit&eacute; de mesure : %s"
+label_info_textile: "Vous pouvez utiliser %s pour la mise en forme du texte."
+
+label_link_back: Retour
+label_link_ingredients: Ingr&eacute;dients
+label_link_new_ingredient: Ajouter un ingr&eacute;dient
+label_link_new_ingredient_category: Nouvelle cat&eacute;gorie d&#x27;ingr&eacute;dients
+label_link_new_period: Nouvelle p&eacute;riode
+label_link_new_recipe: Ajouter une recette
+label_link_new_recipe_category: Nouvelle cat&eacute;gorie de recettes
+label_link_new_measure: Ajouter une mesure
+label_link_new_unit: Ajouter une unit&eacute; de mesure
+label_link_periods: Périodes
+label_link_recipes: Recettes
+label_link_units: Unités de mesure
+label_link_view_measures: Voir les mesures
+
+label_month_january: Janvier
+label_month_february: F&eacute;vrier
+label_month_march: Mars
+label_month_april: Avril
+label_month_may: Mai
+label_month_june: Juin
+label_month_july: Juillet
+label_month_august: Ao&ucirc;t
+label_month_september: Septembre
+label_month_october: Octobre
+label_month_november: Novembre
+label_month_december: Decembre
+
+label_section_name_directions: Pr&eacute;paration
+label_section_name_ingredients: Ingr&eacute;dients
+
+label_title_edit_ingredient: Modification d&#x27;ingr&eacute;dient
+label_title_edit_ingredient_category: Modification de cat&eacute;gorie d&#x27;ingr&eacute;dients
+label_title_edit_measure: Modification d&#x27;une mesure
+label_title_edit_period: Modification d&#x27;une p&eacute;riode
+label_title_edit_recipe: Modification de la recette
+label_title_edit_recipe_category: Modification de la cat&eacute;gorie de recettes
+label_title_edit_unit: Modification de l&#x27;unit&eacute; de mesure
+label_title_ingredient_categories: Cat&eacute;gories d&#x27;ingr&eacute;dients
+label_title_ingredients: "%s"
+label_title_measures: "%s - Mesures"
+label_title_new_ingredient: Ajout d&#x27;un ingr&eacute;dient
+label_title_new_ingredient_category: Nouvelle cat&eacute;gorie d&#x27;ingr&eacute;dients
+label_title_new_measure: Ajout d&#x27;une mesure
+label_title_new_period: Nouvelle p&eacute;riode
+label_title_new_recipe: Ajout d&#x27;une recette
+label_title_new_recipe_category: Nouvelle cat&eacute;gorie de recettes
+label_title_new_unit: Nouvelle unit&eacute; de mesure
+label_title_periods: P&eacute;riodes
+label_title_recipes: "Recettes dans la cat&eacute;gorie %s"
+label_title_recipe_categories: Recettes
+label_title_units: Unit&eacute;s de mesure
+
+question_confirm_delete: "Êtes-vous sûr(e) ?"

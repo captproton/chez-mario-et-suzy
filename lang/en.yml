@@ -18,6 +18,7 @@ flash_notice_ingredient_deleted: Ingredient succesfully deleted
 flash_notice_ingredient_updated: Ingredient succesfully updated
 flash_notice_ingredient_category_created: Ingredient category succesfully created
 flash_notice_ingredient_category_deleted: Ingredient category succesfully deleted
+flash_notice_ingredient_category_non_empty: Impossible to delete a non-empty category
 flash_notice_ingredient_category_updated: Ingredient category succesfully updated
 flash_notice_measure_created: Measure succesfully created
 flash_notice_measure_deleted: Measure succesfully deleted
@@ -30,6 +31,7 @@ flash_notice_recipe_deleted: Recipe succesfully deleted
 flash_notice_recipe_updated: Recipe succesfully updated
 flash_notice_recipe_category_created: Recipe category succesfully created
 flash_notice_recipe_category_deleted: Recipe category succesfully deleted
+flash_notice_recipe_category_non_empty: Impossible to delete a non-empty category
 flash_notice_recipe_category_updated: Recipe category succesfully updated
 flash_notice_unit_created: Unit succesfully created
 flash_notice_unit_deleted: Unit succesfully deleted
