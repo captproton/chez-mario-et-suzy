@@ -5,6 +5,8 @@
   - if ingredient.period
     %p.ingredient_period= l(:label_info_available_from_to, month_name(ingredient.period.start_month_symbol), month_name(ingredient.period.end_month_symbol))
   .controls
+    = link_to l(:label_link_associated_recipes), recipes_ingredient_category_ingredient_path(@ingredient_category, ingredient)
+    |
     = link_to l(:label_button_edit), edit_ingredient_category_ingredient_path(@ingredient_category, ingredient)
     |
     = link_to l(:label_button_delete), url_for([@ingredient_category, ingredient]), :confirm => l(:question_confirm_delete), :method => :delete

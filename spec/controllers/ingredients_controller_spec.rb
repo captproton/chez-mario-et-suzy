@@ -34,6 +34,26 @@ describe IngredientsController do
   
   it_should_behave_like "a RESTfully routed resource"
   
+  describe "route for member :recipes" do
+    it "should map recipes action to /ingredient_categories/ID/ingredients/ID/recipes" do
+      route_for(
+        :controller => 'ingredients',
+        :action => 'recipes',
+        :ingredient_category_id => '24',
+        :id => '32'
+      ).should == "/ingredient_categories/24/ingredients/32/recipes"
+    end
+    
+    it "should trigger recipes action with ID 1 on GET to /ingredient_categories/24/ingredients/1/recipes" do
+      params_from(:get, "/ingredient_categories/24/ingredients/1/recipes").should == {
+        :controller => 'ingredients',
+        :action => 'recipes',
+        :ingredient_category_id => '24',
+        :id => '1'
+      }
+    end
+  end
+  
   describe 'handling GET to /ingredient_categories/1/ingredients' do
     before(:each) do
       @ingredient = mock_model(Ingredient)
@@ -149,6 +169,100 @@ describe IngredientsController do
     
     it "should render the found ingredient as xml" do
       @ingredient.should_receive(:to_xml).and_return("XML")
+      do_get
+      response.body.should == "XML"
+    end
+  end
+  
+  describe "handling GET to /ingredient_categories/30/ingredients/1/recipes" do
+    before(:each) do
+      @recipe = mock_model(Recipe)
+      @ingredient = mock_model(Ingredient)
+      @ingredient.stub!(:recipes).and_return([@recipe])
+      @ingredient_category = mock_model(IngredientCategory)
+      IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      Ingredient.stub!(:find).and_return(@ingredient)
+    end
+    
+    def do_get
+      get :recipes, :ingredient_category_id => "30", :id => "1"
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_success
+    end
+    
+    it "should render recipes template" do
+      do_get
+      response.should render_template('recipes')
+    end
+    
+    it "should find the requested ingredient category" do
+      IngredientCategory.should_receive(:find).with("30").and_return(@ingredient_category)
+      do_get
+    end
+    
+    it "should find the requested ingredient" do
+      Ingredient.should_receive(:find).with("1").and_return(@ingredient)
+      do_get
+    end
+    
+    it "should find recipes in which the ingredient is used" do
+      @ingredient.should_receive(:recipes).and_return([@recipe])
+      do_get
+    end
+    
+    it "should assign the found ingredient for the view" do
+      do_get
+      assigns[:ingredient].should == @ingredient
+    end
+    
+    it "should assign the found recipes for the view" do
+      do_get
+      assigns[:recipes].should == [@recipe]
+    end
+  end
+  
+  describe "handling GET to /ingredient_categories/30/ingredients/1/recipes.xml" do
+    before(:each) do
+      @recipe = mock_model(Recipe)
+      @recipes = [@recipe]
+      @recipes.stub!(:to_xml).and_return("XML")
+      @ingredient = mock_model(Ingredient)
+      @ingredient.stub!(:recipes).and_return(@recipes)
+      @ingredient_category = mock_model(IngredientCategory)
+      IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      Ingredient.stub!(:find).and_return(@ingredient)
+    end
+    
+    def do_get
+      @request.env["HTTP_ACCEPT"] = "application/xml"
+      get :recipes, :ingredient_category_id => "30", :id => "1"
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_success
+    end
+    
+    it "should find the requested ingredient category" do
+      IngredientCategory.should_receive(:find).with("30").and_return(@ingredient_category)
+      do_get
+    end
+    
+    it "should find the requested ingredient" do
+      Ingredient.should_receive(:find).with("1").and_return(@ingredient)
+      do_get
+    end
+    
+    it "should find recipes in which the ingredient is used" do
+      @ingredient.should_receive(:recipes).and_return(@recipes)
+      do_get
+    end
+    
+    it "should render the found recipes as xml" do
+      @recipes.should_receive(:to_xml).and_return("XML")
       do_get
       response.body.should == "XML"
     end

@@ -1,0 +1,10 @@
+%h2=l :label_title_recipes_with_ingredient, @ingredient.name
+
+- if flash[:notice]
+  #notice
+    %p= flash[:notice]
+
+#recipes
+  = render :partial => "recipe", :collection => @recipes
+
+%p= link_to l(:label_link_back), ingredient_category_ingredients_path(@ingredient_category)

@@ -24,6 +24,18 @@ class IngredientsController < ApplicationController
       format.xml  { render :xml => @ingredient }
     end
   end
+  
+  # GET /ingredients/1/recipes
+  # GET /ingredients/1/recipes.xml
+  def recipes
+    @ingredient = Ingredient.find(params[:id])
+    @recipes = @ingredient.recipes
+    
+    respond_to do |format|
+      format.html # recipes.html.haml
+      format.xml { render :xml => @recipes }
+    end
+  end
 
   # GET /ingredients/new
   # GET /ingredients/new.xml

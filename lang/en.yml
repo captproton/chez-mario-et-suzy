@@ -68,6 +68,7 @@ label_info_recipes_count_plural: "(%d recipes)"
 label_info_measurable_in: "Measure unit : %s"
 label_info_textile: "You can use %s to add some style."
 
+label_link_associated_recipes: Recipes
 label_link_back: Back
 label_link_ingredients: Ingredients
 label_link_new_ingredient: Add new ingredient
@@ -117,6 +118,7 @@ label_title_new_recipe_category: Creating a recipe category
 label_title_new_unit: Creating a new unit
 label_title_periods: Available periods
 label_title_recipes: "%s : recipes"
+label_title_recipes_with_ingredient: "Recipes including %s"
 label_title_recipe_categories: Recipes
 label_title_units: Available units
 

@@ -42,6 +42,16 @@ describe "/ingredients/index.html.haml" do
     end
   end
   
+  it "should render a recipes link for each ingredient" do
+    call_render
+    response.should have_tag("div#ingredient_1.ingredient") do
+      with_tag("a[href=/ingredient_categories/1/ingredients/1/recipes]")
+    end
+    response.should have_tag("div#ingredient_2.ingredient") do
+      with_tag("a[href=/ingredient_categories/1/ingredients/2/recipes]")
+    end
+  end
+  
   it "should render an edit link for each ingredient" do
     call_render
     response.should have_tag("div#ingredient_1.ingredient") do

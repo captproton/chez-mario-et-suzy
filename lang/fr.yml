@@ -68,6 +68,7 @@ label_info_recipes_count_plural: "(%d recettes)"
 label_info_measurable_in: "Unit&eacute; de mesure : %s"
 label_info_textile: "Vous pouvez utiliser %s pour la mise en forme du texte."
 
+label_link_associated_recipes: Recettes
 label_link_back: Retour
 label_link_ingredients: Ingr&eacute;dients
 label_link_new_ingredient: Ajouter un ingr&eacute;dient
@@ -117,6 +118,7 @@ label_title_new_recipe_category: Nouvelle cat&eacute;gorie de recettes
 label_title_new_unit: Nouvelle unit&eacute; de mesure
 label_title_periods: P&eacute;riodes
 label_title_recipes: "Recettes dans la cat&eacute;gorie %s"
+label_title_recipes_with_ingredient: "Recettes avec %s"
 label_title_recipe_categories: Recettes
 label_title_units: Unit&eacute;s de mesure
 

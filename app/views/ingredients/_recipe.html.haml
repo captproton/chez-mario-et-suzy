@@ -1,0 +1,8 @@
+%div[recipe]
+  %h3= link_to recipe.name, polymorphic_path([recipe.recipe_category, recipe])
+  .textile_text
+    = textilize(recipe.description)
+  .controls
+    = link_to l(:label_button_edit), edit_polymorphic_path([recipe.recipe_category, recipe])
+    |
+    = link_to l(:label_button_delete), polymorphic_path([recipe.recipe_category, recipe]), :confirm => l(:question_confirm_delete), :method => :delete

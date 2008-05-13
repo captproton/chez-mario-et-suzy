@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :periods
   
   map.resources :ingredient_categories do |ingredient_category|
-    ingredient_category.resources :ingredients
+    ingredient_category.resources :ingredients, :member => { :recipes => :get }
   end
   
   map.resources :recipe_categories do |recipe_category|
