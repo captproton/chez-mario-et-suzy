@@ -6,3 +6,4 @@ doc/app
 public/stylesheets/main.css
 db/schema.rb
 db/*.sqlite3
+config/lighthouse.yml
