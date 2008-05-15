@@ -11,8 +11,11 @@ describe "/units/index.html.haml" do
     unit_2 = mock_model(Unit, :id => 2, :to_param => "2")
     unit_2.should_receive(:name).and_return("Cups")
     unit_2.should_receive(:abbreviation).and_return("cp")
+    
+    # This unit should be on page 2
+    unit_3 = mock_model(Unit)
 
-    assigns[:units] = [unit_1, unit_2]
+    assigns[:units] = [unit_1, unit_2, unit_3].paginate(:per_page => 2)
   end
 
   def call_render
@@ -33,6 +36,11 @@ describe "/units/index.html.haml" do
     end
   end
   
+  it "should not render the third unit which is on next page" do
+    call_render
+    response.should have_tag("div.unit", 2)
+  end
+  
   it "should render an edit link for each unit" do
     call_render
     response.should have_tag("div#unit_1") do
@@ -51,6 +59,11 @@ describe "/units/index.html.haml" do
     response.should have_tag("div#unit_2") do
       with_tag("a[href=/units/2][onclick=?]", delete_link_pattern)
     end
+  end
+  
+  it "should render the pagination block" do
+    call_render
+    response.should have_tag("div.pagination")
   end
   
   it "should have a link for creating a new unit" do

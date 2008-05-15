@@ -6,6 +6,8 @@
 
 #ingredients
   = render :partial => "ingredient", :collection => @ingredients
+  
+= will_paginate @ingredients
 
 %p= link_to l(:label_link_back), ingredient_categories_path
 

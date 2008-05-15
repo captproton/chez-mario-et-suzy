@@ -7,6 +7,8 @@
 #recipes
   = render :partial => "recipe", :collection => @recipes
 
+= will_paginate @recipes
+
 %p= link_to l(:label_link_back), recipe_categories_path
 
 - content_for :sidebar do

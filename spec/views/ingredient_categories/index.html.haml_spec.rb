@@ -16,8 +16,11 @@ describe "/ingredient_categories/index.html.haml" do
     ingredients_2 = mock("ingredients 2")
     ingredients_2.should_receive(:size).and_return(7)
     ingredient_category_2.should_receive(:ingredients).and_return(ingredients_2)
+    
+    # This ingredient category should be on page 2
+    ingredient_category_3 = mock_model(IngredientCategory)
 
-    assigns[:ingredient_categories] = [ingredient_category_1, ingredient_category_2]
+    assigns[:ingredient_categories] = [ingredient_category_1, ingredient_category_2, ingredient_category_3].paginate(:per_page => 2)
   end
   
   def call_render
@@ -34,6 +37,11 @@ describe "/ingredient_categories/index.html.haml" do
       with_tag("h3>a[href=/ingredient_categories/2/ingredients]", /Meat/)
       with_tag("span.count", /7/)
     end
+  end
+  
+  it "should not render the third category which is on next page" do
+    call_render
+    response.should have_tag("div.ingredient_category", 2)
   end
   
   it "should render an edit link for each ingredient categories" do
@@ -69,6 +77,11 @@ describe "/ingredient_categories/index.html.haml" do
   it "should have a link to periods list" do
     call_render
     response.should have_tag("a[href=/periods]")
+  end
+  
+  it "should render the pagination block" do
+    call_render
+    response.should have_tag("div.pagination")
   end
   
   it_should_behave_like "a page in the ingredients section"

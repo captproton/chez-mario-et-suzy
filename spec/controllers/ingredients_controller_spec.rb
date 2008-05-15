@@ -56,16 +56,16 @@ describe IngredientsController do
   
   describe 'handling GET to /ingredient_categories/1/ingredients' do
     before(:each) do
-      @ingredient = mock_model(Ingredient)
-      @ingredient_category = mock_model(IngredientCategory)
-      @ingredients = [@ingredient]
-      @ingredients.stub!(:sort_by).and_return(@ingredients)
-      @ingredient_category.stub!(:ingredients).and_return(@ingredients)
+      @ingredient_category = mock_model(IngredientCategory, :id => 26)
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      
+      @ingredient = mock_model(Ingredient)
+      @ingredients = [@ingredient].paginate
+      Ingredient.stub!(:paginate_by_ingredient_category_id).and_return(@ingredients)
     end
     
     def do_get
-      get :index, :ingredient_category_id => "1"
+      get :index, :ingredient_category_id => "26", :page => "2"
     end
     
     it "should be successful" do
@@ -79,13 +79,12 @@ describe IngredientsController do
     end
     
     it "should find the requested ingredient category" do
-      IngredientCategory.should_receive(:find).with("1").and_return(@ingredient_category)
+      IngredientCategory.should_receive(:find).with("26").and_return(@ingredient_category)
       do_get
     end
     
-    it "should find all ingredients in the specified ingredient category and sort them by name" do
-      @ingredient_category.should_receive(:ingredients).and_return(@ingredients)
-      @ingredients.should_receive(:sort_by).and_return(@ingredients)
+    it "should paginate all ingredients in the specified ingredient category and sort them by name" do
+      Ingredient.should_receive(:paginate_by_ingredient_category_id).with(26, :page => "2", :order => "name", :per_page => 5).and_return(@ingredients)
       do_get
     end
     
@@ -176,16 +175,20 @@ describe IngredientsController do
   
   describe "handling GET to /ingredient_categories/30/ingredients/1/recipes" do
     before(:each) do
-      @recipe = mock_model(Recipe)
-      @ingredient = mock_model(Ingredient)
-      @ingredient.stub!(:recipes).and_return([@recipe])
       @ingredient_category = mock_model(IngredientCategory)
       IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      
+      @ingredient = mock_model(Ingredient)
       Ingredient.stub!(:find).and_return(@ingredient)
+      
+      @recipe = mock_model(Recipe)
+      @recipes = [@recipes]
+      @ingredient.stub!(:recipes).and_return(@recipes)
+      @recipes.stub!(:paginate).and_return(@recipes.paginate)
     end
     
     def do_get
-      get :recipes, :ingredient_category_id => "30", :id => "1"
+      get :recipes, :ingredient_category_id => "30", :id => "1", :page => "2"
     end
     
     it "should be successful" do
@@ -208,8 +211,9 @@ describe IngredientsController do
       do_get
     end
     
-    it "should find recipes in which the ingredient is used" do
-      @ingredient.should_receive(:recipes).and_return([@recipe])
+    it "should paginate recipes in which the ingredient is used and sort them by name" do
+      @ingredient.should_receive(:recipes).and_return(@recipes)
+      @recipes.should_receive(:paginate).with(:page => "2", :order => "name", :per_page => 5).and_return(@recipes.paginate)
       do_get
     end
     
@@ -220,7 +224,7 @@ describe IngredientsController do
     
     it "should assign the found recipes for the view" do
       do_get
-      assigns[:recipes].should == [@recipe]
+      assigns[:recipes].should == @recipes.paginate
     end
   end
   

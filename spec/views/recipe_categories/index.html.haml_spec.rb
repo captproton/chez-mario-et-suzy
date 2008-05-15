@@ -16,8 +16,11 @@ describe "/recipe_categories/index.html.haml" do
     @recipes_2 = mock("recipes 2")
     @recipes_2.should_receive(:size).and_return(33)
     @recipe_category_2.should_receive(:recipes).and_return(@recipes_2)
+    
+    # This category should be on page 2
+    @recipe_category_3 = mock_model(RecipeCategory)
 
-    assigns[:recipe_categories] = [@recipe_category_1, @recipe_category_2]
+    assigns[:recipe_categories] = [@recipe_category_1, @recipe_category_2, @recipe_category_3].paginate(:per_page => 2)
   end
 
   def call_render
@@ -34,6 +37,11 @@ describe "/recipe_categories/index.html.haml" do
       with_tag("h3>a[href=/recipe_categories/2/recipes]", /Desserts/)
       with_tag("span.count", /33/)
     end
+  end
+  
+  it "should not render the third category which is on next page" do
+    call_render
+    response.should have_tag("div.recipe_category", 2)
   end
   
   it "should render an edit link for each recipe category" do
@@ -59,6 +67,11 @@ describe "/recipe_categories/index.html.haml" do
   it "should have a link for creating a new recipe category" do
     call_render
     response.should have_tag("a[href=/recipe_categories/new]")
+  end
+  
+  it "should render the pagination block" do
+    call_render
+    response.should have_tag("div.pagination")
   end
   
   it_should_behave_like "a page in the recipes section"

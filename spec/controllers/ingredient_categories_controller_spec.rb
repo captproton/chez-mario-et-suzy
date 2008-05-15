@@ -5,7 +5,7 @@ describe IngredientCategoriesController do
   
   it_should_behave_like "a RESTfully routed resource"
   
-  it_should_behave_like "a default controller (without #show)"
+  it_should_behave_like "a default controller (without #show), with pagination"
   
   describe "handling DELETE to base_path/1 with unsuccessful destroy" do
     before(:each) do

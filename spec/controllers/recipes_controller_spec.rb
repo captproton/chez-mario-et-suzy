@@ -7,16 +7,16 @@ describe RecipesController do
   
   describe 'handling GET to /recipe_categories/1/recipes' do
     before(:each) do
-      @recipe = mock_model(Recipe)
-      @recipe_category = mock_model(RecipeCategory)
-      @recipes = [@recipe]
-      @recipes.stub!(:sort_by).and_return(@recipes)
-      @recipe_category.stub!(:recipes).and_return(@recipes)
+      @recipe_category = mock_model(RecipeCategory, :id => 33)
       RecipeCategory.stub!(:find).and_return(@recipe_category)
+      
+      @recipe = mock_model(Recipe)
+      @recipes = [@recipe].paginate
+      Recipe.stub!(:paginate_by_recipe_category_id).and_return(@recipes)
     end
     
     def do_get
-      get :index, :recipe_category_id => "1"
+      get :index, :recipe_category_id => "1", :page => "2"
     end
     
     it "should be successful" do
@@ -34,9 +34,8 @@ describe RecipesController do
       do_get
     end
     
-    it "should find all recipes in the specified recipe category and sort then by name" do
-      @recipe_category.should_receive(:recipes).and_return(@recipes)
-      @recipes.should_receive(:sort_by).and_return(@recipes)
+    it "should paginate all recipes in the specified recipe category and sort then by name" do
+      Recipe.should_receive(:paginate_by_recipe_category_id).with(33, :page => "2", :order => "name", :per_page => 5).and_return(@recipes)
       do_get
     end
     

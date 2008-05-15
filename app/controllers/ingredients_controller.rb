@@ -7,11 +7,14 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.xml
   def index
-    @ingredients = @ingredient_category.ingredients.sort_by(&:name)
-
     respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @ingredients }
+      format.html do
+        @ingredients = Ingredient.paginate_by_ingredient_category_id @ingredient_category.id, :page => params[:page], :order => 'name', :per_page => 5
+      end # index.html.haml
+      format.xml do
+        @ingredients = @ingredient_category.ingredients.sort_by(&:name)
+        render :xml => @ingredients
+      end
     end
   end
 
@@ -29,11 +32,15 @@ class IngredientsController < ApplicationController
   # GET /ingredients/1/recipes.xml
   def recipes
     @ingredient = Ingredient.find(params[:id])
-    @recipes = @ingredient.recipes
     
     respond_to do |format|
-      format.html # recipes.html.haml
-      format.xml { render :xml => @recipes }
+      format.html do
+        @recipes = @ingredient.recipes.paginate(:page => params[:page], :order => 'name', :per_page => 5)
+      end # recipes.html.haml
+      format.xml do
+        @recipes = @ingredient.recipes
+        render :xml => @recipes
+      end
     end
   end
 

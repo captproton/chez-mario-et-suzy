@@ -5,5 +5,5 @@ describe PeriodsController do
   
   it_should_behave_like "a RESTfully routed resource"
   
-  it_should_behave_like "a default controller (without #show)"
+  it_should_behave_like "a default controller (without #show), without pagination"
 end

@@ -7,5 +7,7 @@
 #units
   = render :partial => "unit", :collection => @units
 
+= will_paginate @units
+
 - content_for :sidebar do
   %li= link_to l(:label_link_new_unit), new_unit_path

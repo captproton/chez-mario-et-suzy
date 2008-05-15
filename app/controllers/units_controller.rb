@@ -4,11 +4,14 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.xml
   def index
-    @units = Unit.find(:all, :order => 'name')
-
     respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @units }
+      format.html do
+        @units = Unit.paginate(:page => params[:page], :order => 'name', :per_page => 5)
+      end # index.html.haml
+      format.xml do
+        @units = Unit.find(:all, :order => 'name')
+        render :xml => @units
+      end
     end
   end
 

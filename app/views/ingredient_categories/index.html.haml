@@ -7,6 +7,8 @@
 #ingredient_categories
   = render :partial => "ingredient_category", :collection => @ingredient_categories
 
+= will_paginate @ingredient_categories
+
 - content_for :sidebar do
   %li= link_to l(:label_link_new_ingredient_category), new_ingredient_category_path
   %li= link_to l(:label_link_units), units_path

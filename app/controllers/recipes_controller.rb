@@ -6,11 +6,14 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.xml
   def index
-    @recipes = @recipe_category.recipes.sort_by(&:name)
-
     respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @recipes }
+      format.html do
+        @recipes = Recipe.paginate_by_recipe_category_id @recipe_category.id, :page => params[:page], :order => "name", :per_page => 5
+      end # index.html.haml
+      format.xml do
+        @recipes = @recipe_category.recipes.sort_by(&:name)
+        render :xml => @recipes
+      end
     end
   end
 

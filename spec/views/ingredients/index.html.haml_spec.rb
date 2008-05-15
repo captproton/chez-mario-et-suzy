@@ -19,9 +19,12 @@ describe "/ingredients/index.html.haml" do
     ingredient_2.should_receive(:name).and_return("Lemons")
     ingredient_2.should_receive(:unit).at_least(:once).and_return(nil)
     ingredient_2.should_receive(:period).at_least(:once).and_return(nil)
+    
+    # This ingredient should be on page 2
+    ingredient_3 = mock_model(Ingredient)
 
     assigns[:ingredient_category] = ingredient_category
-    assigns[:ingredients] = [ingredient_1, ingredient_2]
+    assigns[:ingredients] = [ingredient_1, ingredient_2, ingredient_3].paginate(:per_page => 2)
   end
 
   def call_render
@@ -40,6 +43,11 @@ describe "/ingredients/index.html.haml" do
       without_tag("p.ingredient_unit")
       without_tag("p.ingredient_period")
     end
+  end
+  
+  it "should not render the third ingredient which is on next page" do
+    call_render
+    response.should have_tag("div.ingredient", 2)
   end
   
   it "should render a recipes link for each ingredient" do
@@ -70,6 +78,11 @@ describe "/ingredients/index.html.haml" do
     response.should have_tag("div#ingredient_2.ingredient") do
       with_tag("a[href=/ingredient_categories/1/ingredients/2][onclick=?]", delete_link_pattern)
     end
+  end
+  
+  it "should render the pagination block" do
+    call_render
+    response.should have_tag("div.pagination")
   end
   
   it "should have a link for creating a new ingredient" do

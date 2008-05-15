@@ -4,11 +4,15 @@ class IngredientCategoriesController < ApplicationController
   # GET /ingredient_categories
   # GET /ingredient_categories.xml
   def index
-    @ingredient_categories = IngredientCategory.find(:all, :order => 'name')
-
+    # Paginates if HTML, returns all if XML
     respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @ingredient_categories }
+      format.html do
+        @ingredient_categories = IngredientCategory.paginate(:page => params[:page], :order => 'name', :per_page => 5)
+      end # index.html.haml
+      format.xml do
+        @ingredient_categories = IngredientCategory.find(:all, :order => 'name')
+        render :xml => @ingredient_categories
+      end
     end
   end
 

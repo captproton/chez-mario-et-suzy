@@ -78,6 +78,8 @@ label_link_new_recipe: Add new recipe
 label_link_new_recipe_category: Add new recipe category
 label_link_new_measure: Add measure
 label_link_new_unit: Add new unit
+label_link_page_next: Next &raquo;
+label_link_page_previous: "&laquo; Previous"
 label_link_periods: Periods
 label_link_recipes: Recipes
 label_link_units: Units

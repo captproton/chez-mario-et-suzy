@@ -1,9 +1,38 @@
-describe "a default controller (without #show)", :shared => true do
-  before(:all) do
-    @singular_symbol = model_class.name.underscore.to_sym
-    @plural_symbol = model_class.name.underscore.pluralize.to_sym
+describe "a default controller (without #show), with pagination", :shared => true do
+  describe "handling GET to base_path" do
+    before(:each) do
+      model_class.stub!(:paginate).and_return([].paginate)
+    end
+    
+    def do_get
+      get :index, :page => "2"
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_success
+    end
+    
+    it "should render index template" do
+      do_get
+      response.should render_template('index')
+    end
+    
+    it "should paginate records and sort them by name if applicable" do
+      model_class.should_receive(:paginate).with(:page => "2", :order => 'name', :per_page => 5).and_return([].paginate)
+      do_get
+    end
+    
+    it "should assign the found records for the view" do
+      do_get
+      assigns[model_class.name.underscore.pluralize.to_sym].should_not be_nil
+    end
   end
   
+  it_should_behave_like "a default controller (without #show)"
+end
+
+describe "a default controller (without #show), without pagination", :shared => true do
   describe "handling GET to base_path" do
     before(:each) do
       @model = mock_model(model_class)
@@ -33,8 +62,17 @@ describe "a default controller (without #show)", :shared => true do
     
     it "should assign the found records for the view" do
       do_get
-      assigns[@plural_symbol].should == [@model]
+      assigns[model_class.name.underscore.pluralize.to_sym].should == [@model]
     end
+  end
+  
+  it_should_behave_like "a default controller (without #show)"
+end
+
+describe "a default controller (without #show)", :shared => true do
+  before(:all) do
+    @singular_symbol = model_class.name.underscore.to_sym
+    @plural_symbol = model_class.name.underscore.pluralize.to_sym
   end
   
   describe "handling GET to base_path.xml" do

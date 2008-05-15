@@ -19,10 +19,13 @@ describe "/ingredients/recipes.html.haml" do
     @recipe_2.should_receive(:name).and_return("Lemon cocktail")
     @recipe_2.should_receive(:description).and_return("Fresh")
     @recipe_2.should_receive(:recipe_category).at_least(:once).and_return(@recipe_category)
+    
+    # This recipe should be on page 2
+    @recipe_3 = mock_model(Recipe)
 
     assigns[:ingredient] = @ingredient
     assigns[:ingredient_category] = @ingredient_category
-    assigns[:recipes] = [@recipe_1, @recipe_2]
+    assigns[:recipes] = [@recipe_1, @recipe_2, @recipe_3].paginate(:per_page => 2)
   end
 
   def call_render
@@ -39,6 +42,11 @@ describe "/ingredients/recipes.html.haml" do
       with_tag("h3>a[href=/recipe_categories/1/recipes/2]", /Lemon cocktail/)
       with_tag("div.textile_text", /Fresh/)
     end
+  end
+  
+  it "should not render the third recipe which is on next page" do
+    call_render
+    response.should have_tag("div.recipe", 2)
   end
   
   it "should render an edit link for each recipe" do
@@ -59,6 +67,11 @@ describe "/ingredients/recipes.html.haml" do
     response.should have_tag("div#recipe_2") do
       with_tag("a[href=/recipe_categories/1/recipes/2][onclick=?]", delete_link_pattern)
     end
+  end
+  
+  it "should render the pagination block" do
+    call_render
+    response.should have_tag("div.pagination")
   end
   
   it_should_behave_like "a page in the ingredients section"
