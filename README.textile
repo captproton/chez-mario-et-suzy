@@ -1,0 +1,15 @@
+h1. Chez Mario et Suzy
+
+You have many recipes and you are looking for a better place to keep them ? Then *Chez Mario et Suzy* is for you.
+
+*Chez Mario et Suzy* is a web application for managing recipes. It uses a database to host its data.
+
+h1. Installation
+
+The recommanded way to install *Chez Mario et Suzy* is to clone the Git repository :
+
+<pre>
+<code>
+git clone git://github.com/kookoolen/chez-mario-et-suzy.git
+</code>
+</pre>
