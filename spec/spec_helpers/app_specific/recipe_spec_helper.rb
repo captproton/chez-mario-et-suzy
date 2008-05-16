@@ -16,6 +16,15 @@ module RecipeSpecHelper
     [:name, :description, :directions, :recipe_category]
   end
   
+  def attributes_for_errors_explanation
+    {
+      :name => "My ingredient",
+      :description => "My description",
+      :directions => "My directions",
+      :recipe_category_id => 1
+    }
+  end
+  
   def restful_resource_path
     {
       :base_path => "/recipe_categories/24/recipes",

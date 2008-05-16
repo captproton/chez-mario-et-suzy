@@ -1,4 +1,5 @@
 %p= f.text_field :name, :required => true
+%p= f.select :recipe_category_id, @recipe_categories.collect { |rc| [rc.name, rc.id] }, :required => true
 = textile_info
 %p~ f.text_area :description, :rows => 10, :cols => 60, :required => true
 = textile_info

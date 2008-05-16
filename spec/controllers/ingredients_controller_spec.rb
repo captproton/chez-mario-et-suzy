@@ -276,8 +276,11 @@ describe IngredientsController do
     before(:each) do
       @ingredient = mock_model(Ingredient, :null_object => true)
       Ingredient.stub!(:new).and_return(@ingredient)
+      
       @ingredient_category = mock_model(IngredientCategory)
-      IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      @ingredient_categories = []
+      IngredientCategory.stub!(:find).and_return(@ingredient_category, @ingredient_categories)
+      
       init_units_and_periods
     end
   
@@ -297,6 +300,11 @@ describe IngredientsController do
     
     it "should find the requested ingredient category" do
       IngredientCategory.should_receive(:find).with("30").and_return(@ingredient_category)
+      do_get
+    end
+    
+    it "should find all ingredient categories" do
+      IngredientCategory.should_receive(:find).with(:all).and_return(@ingredient_categories)
       do_get
     end
   
@@ -320,6 +328,11 @@ describe IngredientsController do
       assigns[:ingredient].should equal(@ingredient)
     end
     
+    it "should assign ingredient categories for the view" do
+      do_get
+      assigns[:ingredient_categories].should equal(@ingredient_categories)
+    end
+    
     def call_request; do_get; end
     it_should_behave_like "handles units and periods"
   end
@@ -328,8 +341,11 @@ describe IngredientsController do
     before(:each) do
       @ingredient = mock_model(Ingredient)
       Ingredient.stub!(:find).and_return(@ingredient)
+      
       @ingredient_category = mock_model(IngredientCategory)
-      IngredientCategory.stub!(:find).and_return(@ingredient_category)
+      @ingredient_categories = []
+      IngredientCategory.stub!(:find).and_return(@ingredient_category, @ingredient_categories)
+      
       init_units_and_periods
     end
   
@@ -356,10 +372,20 @@ describe IngredientsController do
       Ingredient.should_receive(:find).with("1").and_return(@ingredient)
       do_get
     end
+    
+    it "should find all ingredient categories" do
+      IngredientCategory.should_receive(:find).with(:all).and_return(@ingredient_categories)
+      do_get
+    end
   
     it "should assign the found record for the view" do
       do_get
       assigns[:ingredient].should equal(@ingredient)
+    end
+    
+    it "should assign ingredient categories for the view" do
+      do_get
+      assigns[:ingredient_categories].should equal(@ingredient_categories)
     end
     
     def call_request; do_get; end

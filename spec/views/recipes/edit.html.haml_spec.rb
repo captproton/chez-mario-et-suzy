@@ -24,6 +24,7 @@ describe "/recipes/edit.html.haml" do
       @errors = errors_mock_for(@recipe)
     
       assigns[:recipe_category] = @recipe_category
+      assigns[:recipe_categories] = []
       assigns[:recipe] = @recipe
     end
 
@@ -31,6 +32,7 @@ describe "/recipes/edit.html.haml" do
       call_render
       response.should have_tag("form[action=/recipe_categories/1/recipes/1][method=post]") do
         with_tag('input#recipe_name[name=?]', "recipe[name]")
+        with_tag('select#recipe_recipe_category_id[name=?]', "recipe[recipe_category_id]")
         with_tag('textarea#recipe_description[name=?]', "recipe[description]")
         with_tag('textarea#recipe_directions[name=?]', "recipe[directions]")
         with_tag('input[type=submit]')
@@ -46,7 +48,10 @@ describe "/recipes/edit.html.haml" do
   end
   
   describe "errors explanation block" do
-    before(:each) { assigns[:recipe_category] = mock_model(RecipeCategory) }
+    before(:each) do
+      assigns[:recipe_category] = mock_model(RecipeCategory)
+      assigns[:recipe_categories] = []
+    end
     it_should_behave_like "a new/edit page with model errors"
   end
 end

@@ -49,6 +49,7 @@ class IngredientsController < ApplicationController
   def new
     @ingredient = Ingredient.new
     @ingredient.ingredient_category = @ingredient_category
+    @ingredient_categories = IngredientCategory.find(:all)
 
     respond_to do |format|
       format.html # new.html.haml
@@ -59,6 +60,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients/1/edit
   def edit
     @ingredient = Ingredient.find(params[:id])
+    @ingredient_categories = IngredientCategory.find(:all)
   end
 
   # POST /ingredients

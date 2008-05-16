@@ -42,10 +42,12 @@ field_description: Description
 field_directions: Directions
 field_end_month: End month
 field_ingredient: Ingredient
+field_ingredient_category: Category
 field_name: Name
 field_number: Number
 field_period: Period
 field_period_id: Period
+field_recipe_category: Category
 field_start_month: Start month
 field_unit: Unit
 field_unit_id: Unit

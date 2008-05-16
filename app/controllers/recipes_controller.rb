@@ -33,6 +33,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.recipe_category = @recipe_category
+    @recipe_categories = RecipeCategory.find(:all)
 
     respond_to do |format|
       format.html # new.html.haml
@@ -43,6 +44,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit
     @recipe = Recipe.find(params[:id])
+    @recipe_categories = RecipeCategory.find(:all)
   end
 
   # POST /recipes

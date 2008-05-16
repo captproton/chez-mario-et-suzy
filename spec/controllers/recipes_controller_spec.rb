@@ -166,8 +166,10 @@ describe RecipesController do
     before(:each) do
       @recipe = mock_model(Recipe, :null_object => true)
       Recipe.stub!(:new).and_return(@recipe)
+      
       @recipe_category = mock_model(RecipeCategory)
-      RecipeCategory.stub!(:find).and_return(@recipe_category)
+      @recipe_categories = []
+      RecipeCategory.stub!(:find).and_return(@recipe_category, @recipe_categories)
     end
   
     def do_get
@@ -186,6 +188,11 @@ describe RecipesController do
     
     it "should find the requested recipe category" do
       RecipeCategory.should_receive(:find).with("30").and_return(@recipe_category)
+      do_get
+    end
+    
+    it "should find all recipe categories" do
+      RecipeCategory.should_receive(:find).with(:all).and_return(@recipe_categories)
       do_get
     end
   
@@ -208,14 +215,21 @@ describe RecipesController do
       do_get
       assigns[:recipe].should equal(@recipe)
     end
+    
+    it "should assign the recipe categories for the view" do
+      do_get
+      assigns[:recipe_categories].should equal(@recipe_categories)
+    end
   end
 
   describe "handling GET to /recipe_categories/30/recipes/1/edit" do
     before(:each) do
       @recipe = mock_model(Recipe)
       Recipe.stub!(:find).and_return(@recipe)
+      
       @recipe_category = mock_model(RecipeCategory)
-      RecipeCategory.stub!(:find).and_return(@recipe_category)
+      @recipe_categories = []
+      RecipeCategory.stub!(:find).and_return(@recipe_category, @recipe_categories)
     end
   
     def do_get
@@ -237,6 +251,11 @@ describe RecipesController do
       do_get
     end
     
+    it "should find all recipe categories" do
+      RecipeCategory.should_receive(:find).with(:all).and_return(@recipe_categories)
+      do_get
+    end
+    
     it "should find the requested recipe" do
       Recipe.should_receive(:find).with("1").and_return(@recipe)
       do_get
@@ -245,6 +264,11 @@ describe RecipesController do
     it "should assign the found record for the view" do
       do_get
       assigns[:recipe].should equal(@recipe)
+    end
+    
+    it "should assign the recipe categories for the view" do
+      do_get
+      assigns[:recipe_categories].should equal(@recipe_categories)
     end
   end
 

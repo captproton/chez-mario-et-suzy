@@ -18,6 +18,7 @@ describe "/ingredients/edit.html.haml" do
 
       assigns[:ingredient] = @ingredient
       assigns[:ingredient_category] = @ingredient_category
+      assigns[:ingredient_categories] = []
       assigns[:units] = []
       assigns[:periods] = []
     end
@@ -26,6 +27,7 @@ describe "/ingredients/edit.html.haml" do
       call_render
       response.should have_tag("form[action=/ingredient_categories/1/ingredients/1][method=post]") do
         with_tag('input#ingredient_name[name=?]', "ingredient[name]")
+        with_tag('select#ingredient_ingredient_category_id[name=?]', "ingredient[ingredient_category_id]")
         with_tag('select#ingredient_unit_id[name=?]', "ingredient[unit_id]")
         with_tag('select#ingredient_period_id[name=?]', "ingredient[period_id]")
         with_tag("input[type=submit]")
@@ -43,6 +45,7 @@ describe "/ingredients/edit.html.haml" do
   describe "error explanation block" do
     before(:each) do
       assigns[:ingredient_category] = mock_model(IngredientCategory)
+      assigns[:ingredient_categories] = []
       assigns[:units] = []
       assigns[:periods] = []
     end
