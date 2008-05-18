@@ -6,4 +6,6 @@ class Ingredient < ActiveRecord::Base
   has_many :recipes, :through => :measures
   
   validates_presence_of :name, :ingredient_category
+  
+  before_destroy { |record| record.recipes.empty? }
 end

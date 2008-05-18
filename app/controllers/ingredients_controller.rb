@@ -102,9 +102,13 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1.xml
   def destroy
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
-
-    flash[:notice] = l(:flash_notice_ingredient_deleted)
+    
+    if @ingredient.destroy
+      flash[:notice] = l(:flash_notice_ingredient_deleted)
+    else
+      flash[:notice] = l(:flash_notice_used_ingredient)
+    end
+    
     respond_to do |format|
       format.html { redirect_to [ @ingredient_category, Ingredient.new ] }
       format.xml  { head :ok }

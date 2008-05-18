@@ -27,4 +27,16 @@ describe Ingredient do
   it "should belong to a period" do
     Ingredient.should belong_to(:period)
   end
+  
+  it "should be possible to delete an ingredient if it is not used in any recipes" do
+    ingredient = Ingredient.create!(:name => "My ingredient", :ingredient_category => mock_model(IngredientCategory))
+    ingredient.stub!(:recipes).and_return([])
+    ingredient.destroy.should_not be_false
+  end
+  
+  it "should be impossible to delete an ingredient if it is used in recipes" do
+    ingredient = Ingredient.create!(:name => "My ingredient", :ingredient_category => mock_model(IngredientCategory))
+    ingredient.stub!(:recipes).and_return([mock_model(Recipe)])
+    ingredient.destroy.should be_false
+  end
 end

@@ -16,6 +16,7 @@ activerecord_error_not_a_number: is not a number
 flash_notice_ingredient_created: Ingredient succesfully created
 flash_notice_ingredient_deleted: Ingredient succesfully deleted
 flash_notice_ingredient_updated: Ingredient succesfully updated
+flash_notice_used_ingredient: Impossible to delete an ingredient which is used in recipes
 flash_notice_ingredient_category_created: Ingredient category succesfully created
 flash_notice_ingredient_category_deleted: Ingredient category succesfully deleted
 flash_notice_ingredient_category_non_empty: Impossible to delete a non-empty category
